@@ -17,40 +17,40 @@
     <properties>
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <allure.version>1.4.3</allure.version>
+        <selenium-java.version>2.44.0</selenium-java.version>
+        <allure.version>1.4.0</allure.version>
         <aspectj.version>1.7.4</aspectj.version>
     </properties>
 
     <name>Allure TestNG Example</name>
 
-    <licenses>
+<!--    <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
-    </licenses>
+    </licenses>-->
 
-    <scm>
-        <url>https://github.com/allure-framework/allure-testng-examples</url>
-        <connection>scm:git@github.com:allure-framework/allure-testng-example.git</connection>
-        <developerConnection>scm:git:git@github.com:allure-framework/allure-testng-example.git</developerConnection>
-    </scm>
+    <!--<scm>-->
+        <!--<url>https://github.com/allure-framework/allure-testng-examples</url>-->
+        <!--<connection>scm:git@github.com:allure-framework/allure-testng-example.git</connection>-->
+        <!--<developerConnection>scm:git:git@github.com:allure-framework/allure-testng-example.git</developerConnection>-->
+    <!--</scm>-->
 
-    <issueManagement>
+<!--    <issueManagement>
         <system>GitHub Issues</system>
         <url>https://github.com/allure-framework/allure-testng-example/issues</url>
-    </issueManagement>
+    </issueManagement>-->
 
-    <developers>
+<!--    <developers>
         <developer>
             <id>charlie</id>
             <name>Dmitry Baev</name>
             <email>charlie@yandex-team.ru</email>
             <organization>Yandex</organization>
         </developer>
-    </developers>
+    </developers>-->
 
     <dependencies>
         <!--Allure TestNG-->
@@ -66,11 +66,33 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.5</version>
+        </dependency>
+
         <!--Web Driver-->
         <dependency>
             <groupId>com.github.detro.ghostdriver</groupId>
             <artifactId>phantomjsdriver</artifactId>
-            <version>1.0.4</version>
+            <version>1.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-server</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--Matchers-->
         <dependency>
@@ -121,8 +143,8 @@
                     </properties>
                     <systemPropertyVariables>
                         <phantomjs.binary.path>${basedir}/src/test/resources/drivers/phantomjs.exe</phantomjs.binary.path>
-                        <!--<webdriver.chrome.driver>${basedir}/src/test/resources/drivers/chromedriver.exe</webdriver.chrome.driver>-->
-                        <!--<webdriver.ie.driver>${basedir}/src/test/resources/drivers/IEDriverServer.exe</webdriver.ie.driver>-->
+                        <webdriver.chrome.driver>${basedir}/src/test/resources/drivers/chromedriver.exe</webdriver.chrome.driver>
+                        <webdriver.ie.driver>${basedir}/src/test/resources/drivers/IEDriverServer.exe</webdriver.ie.driver>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>

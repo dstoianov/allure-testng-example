@@ -17,7 +17,7 @@ import java.sql.Driver;
 
 /**
  * Created by dstoianov on 2014-11-06, 6:20 PM
- * E-mail: <dstoianov@plslogistics.com>
+ * E-mail:
  */
 public class FirstAllureTest {
 
