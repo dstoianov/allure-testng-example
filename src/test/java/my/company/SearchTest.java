@@ -1,6 +1,7 @@
 package my.company;
 
 import my.company.steps.WebDriverSteps;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
@@ -16,9 +17,8 @@ public class SearchTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        steps = new WebDriverSteps(
-                new PhantomJSDriver(new DesiredCapabilities())
-        );
+        steps = new WebDriverSteps(new PhantomJSDriver(new DesiredCapabilities()));
+//        steps = new WebDriverSteps(new FirefoxDriver());
     }
 
 

@@ -15,6 +15,7 @@ import static org.testng.Assert.fail;
  *         Date: 24.11.13
  */
 public class SimpleTest {
+/*
     @Test
     public void simpleTest() throws Exception {
         assertThat(2, is(2));
@@ -65,6 +66,7 @@ public class SimpleTest {
     public void parametrizedTest(int parameter) {
         assertThat(parameter, is(2));
     }
+*/
 
 }
 
