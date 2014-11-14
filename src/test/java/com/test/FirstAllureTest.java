@@ -1,5 +1,6 @@
 package com.test;
 
+
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -12,14 +13,18 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.Allure;
 import ru.yandex.qatools.allure.annotations.*;
 import ru.yandex.qatools.allure.config.AllureConfig;
+import ru.yandex.qatools.allure.events.AddParameterEvent;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 
 import java.io.File;
 import java.sql.Driver;
 import java.util.Properties;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.testng.AssertJUnit.fail;
 
 /**
@@ -128,6 +133,26 @@ public class FirstAllureTest {
         fail();
     }
 
+
+    @Severity(SeverityLevel.NORMAL)
+    @Title("Test with long assertion text")
+    @Issue("JIRA-254")
+    @Test
+    public void testName5() throws Exception {
+        Allure.LIFECYCLE.fire(new AddParameterEvent("PATH", System.getenv("PATH")));
+        Allure.LIFECYCLE.fire(new AddParameterEvent("BASEDIR", new File(".").getCanonicalPath()));
+        Allure.LIFECYCLE.fire(new AddParameterEvent("OS_NAME", System.getProperty("os.name")));
+        Allure.LIFECYCLE.fire(new AddParameterEvent("OS_VERSION", System.getProperty("os.version")));
+        Allure.LIFECYCLE.fire(new AddParameterEvent("JAVA_VERSION", System.getProperty("java.version")));
+
+    }
+
+    @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
+    @Description("I hate descriptions! See the title!")
+    @Test
+    public void testName6() throws Exception {
+        assertThat(4, is(2 + 2));
+    }
 
     @Attachment(value = "Screenshot Attachment", type = "image/png")
     public byte[] makeScreenShot() {
