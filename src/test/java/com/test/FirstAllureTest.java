@@ -52,7 +52,7 @@ public class FirstAllureTest {
     @Test
     public void testName1() throws Exception {
         driver.get("http://google.com.ua");
-        makeScreenshot();
+        fail();
     }
 
 
