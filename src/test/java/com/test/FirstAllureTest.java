@@ -1,11 +1,13 @@
 package com.test;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -26,19 +28,25 @@ import static org.testng.AssertJUnit.fail;
  */
 public class FirstAllureTest {
 
-    @Parameter("My Param")
-    private String myParameter;
+    @Parameter("Browser Name")
+    private String browser;
+
+    @Parameter("Browser Version")
+    private String version;
+
+    @Parameter("Platform")
+    private String platform;
 
     private WebDriver driver;
 
     @BeforeClass
     public void setUp() {
 
-        String property = System.getProperty("phantomjs.binary.path");
-        String property2 = System.getProperty("webdriver.chrome.driver");
-        String property3 = System.getProperty("webdriver.ie.driver");
-//        driver = new FirefoxDriver();
-        driver = new PhantomJSDriver();
+        String p1 = System.getProperty("phantomjs.binary.path");
+        String p2 = System.getProperty("webdriver.chrome.driver");
+        String p3 = System.getProperty("webdriver.ie.driver");
+        driver = new FirefoxDriver();
+//        driver = new PhantomJSDriver();
     }
 
     @AfterClass
@@ -56,13 +64,20 @@ public class FirstAllureTest {
     }
 
 
-    @Issues({@Issue("JIRA-1"), @Issue("JIRA-2")})
+    @Issues({
+            @Issue("JIRA-1"),
+            @Issue("JIRA-2")
+    })
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "some description from test")
     public void testName2() throws Exception {
-        myParameter = "papa";
-        myParameter = "mapa";
-        myParameter = "mama";
+
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+
+        browser = cap.getBrowserName();
+        version = cap.getVersion();
+        platform = cap.getPlatform().toString();
+
         driver.get("http://google.com.ua");
 
         String chromeDdriver = System.getProperty("webdriver.chrome.driver");
@@ -98,16 +113,60 @@ public class FirstAllureTest {
     }
 
 
+    @Title("default.title")
+    @Description("default.description")
+    @Features("default.feature")
+    @Stories("default.story")
+    @Issue("default.issue")
     @Test
     public void testName4() throws Exception {
         driver.get("http://google.co.uk");
+
+        jsonAttach();
+        xmlAttach();
 
         fail();
     }
 
 
-    @Attachment(type = "image/png")
-    public byte[] makeScreenshot() {
+    @Attachment(value = "Screenshot Attachment", type = "image/png")
+    public byte[] makeScreenShot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
+
+    String json = "{\n" +
+            "    \"glossary\": {\n" +
+            "        \"title\": \"example glossary\",\n" +
+            "\t\t\"GlossDiv\": {\n" +
+            "            \"title\": \"S\",\n" +
+            "\t\t\t\"GlossList\": {\n" +
+            "                \"GlossEntry\": {\n" +
+            "                    \"ID\": \"SGML\",\n" +
+            "\t\t\t\t\t\"SortAs\": \"SGML\",\n" +
+            "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n" +
+            "\t\t\t\t\t\"Acronym\": \"SGML\",\n" +
+            "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n" +
+            "\t\t\t\t\t\"GlossDef\": {\n" +
+            "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n" +
+            "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n" +
+            "                    },\n" +
+            "\t\t\t\t\t\"GlossSee\": \"markup\"\n" +
+            "                }\n" +
+            "            }\n" +
+            "        }\n" +
+            "    }\n" +
+            "}";
+
+
+    @Attachment(value = "XML Attachment", type = "text/xml")
+    public byte[] xmlAttach() {
+        return s.getBytes();
+    }
+
+    @Attachment(value = "JSON Attachment", type = "application/json")
+    public byte[] jsonAttach() {
+        return json.getBytes();
     }
 }

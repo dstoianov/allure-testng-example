@@ -31,7 +31,7 @@ public class OnFailure extends TestListenerAdapter {
 //        return "My own attachment body!";
 //    }
 
-    @Attachment(type = "image/png")
+    @Attachment(value = "PNG Attachment", type = "image/png")
     public byte[] createAttachment() {
         return captureScreenShot();
     }
