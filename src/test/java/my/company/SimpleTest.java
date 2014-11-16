@@ -15,7 +15,7 @@ import static org.testng.Assert.fail;
  *         Date: 24.11.13
  */
 public class SimpleTest {
-/*
+
     @Test
     public void simpleTest() throws Exception {
         assertThat(2, is(2));
@@ -58,15 +58,17 @@ public class SimpleTest {
     @DataProvider
     public Object[][] dataProvider() {
         return new Object[][]{
-                {1}, {2}, {3}
+                {"first"},
+                {"second"},
+                {"third"}
         };
     }
 
     @Test(dataProvider = "dataProvider")
-    public void parametrizedTest(int parameter) {
-        assertThat(parameter, is(2));
+    public void parametrizedTest(String parameter) {
+        assertThat(parameter, is("second"));
     }
-*/
+
 
 }
 

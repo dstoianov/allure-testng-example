@@ -66,6 +66,7 @@ public class FirstAllureTest {
     @Test
     public void testName1() throws Exception {
         driver.get("http://google.com.ua");
+
         fail();
     }
 
@@ -123,15 +124,16 @@ public class FirstAllureTest {
     @Description("default.description")
     @Features("default.feature")
     @Stories("default.story")
-    @Issue("default.issue")
+    @Issue("JIRA-321")
     @Test
     public void testName4() throws Exception {
         driver.get("http://google.co.uk");
 
         jsonAttach();
         xmlAttach();
-
+        makeScreenShot();
         fail();
+
     }
 
 
@@ -146,10 +148,8 @@ public class FirstAllureTest {
         Allure.LIFECYCLE.fire(new AddParameterEvent("OS_VERSION", System.getProperty("os.version")));
         Allure.LIFECYCLE.fire(new AddParameterEvent("JAVA_VERSION", System.getProperty("java.version")));
 
+        makeScreenShot();
     }
-
-
-
 
 
     @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
@@ -159,10 +159,6 @@ public class FirstAllureTest {
         assertThat(4, is(2 + 2));
     }
 
-    @Attachment(value = "Screenshot Attachment", type = "image/png")
-    public byte[] makeScreenShot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
 
     String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
 
@@ -199,4 +195,10 @@ public class FirstAllureTest {
     public byte[] jsonAttach() {
         return json.getBytes();
     }
+
+    @Attachment(value = "PNG wd Attachment", type = "image/png")
+    public byte[] makeScreenShot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
 }

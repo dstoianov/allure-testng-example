@@ -9,6 +9,6 @@
     <parameter>
         <name>Test stand</name>
         <key>my.properties.url</key>
-        <value>http://yandex.ru</value>
+        <value>http://google.com</value>
     </parameter>
 </qa:environment>

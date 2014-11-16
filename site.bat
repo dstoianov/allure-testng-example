@@ -1,0 +1,1 @@
+mvn -Dallure.issues.tracker.pattern=http://google.com/issues/%%s site
