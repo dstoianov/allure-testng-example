@@ -1,6 +1,7 @@
 package com.test;
 
 
+import org.junit.Ignore;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -50,8 +51,8 @@ public class FirstAllureTest {
         String p1 = System.getProperty("phantomjs.binary.path");
         String p2 = System.getProperty("webdriver.chrome.driver");
         String p3 = System.getProperty("webdriver.ie.driver");
-        driver = new FirefoxDriver();
-//        driver = new PhantomJSDriver();
+//        driver = new FirefoxDriver();
+        driver = new PhantomJSDriver();
     }
 
     @AfterClass
@@ -87,10 +88,10 @@ public class FirstAllureTest {
 
         String chromeDdriver = System.getProperty("webdriver.chrome.driver");
 
-        String direc = System.getProperty("allure.results.directory");
         String issue = System.getProperty("my.test.var");
-        System.out.println("my.test.var            : ----> " + issue);
-        System.out.println("allure.results.directory : ----> " + direc);
+        System.out.println("my.test.var                   : ----> " + issue);
+        String direc = System.getProperty("allure.issues.tracker.pattern");
+        System.out.println("allure.issues.tracker.pattern : ----> " + direc);
 
         String property1 = System.getProperty("project.version");
 
@@ -146,6 +147,10 @@ public class FirstAllureTest {
         Allure.LIFECYCLE.fire(new AddParameterEvent("JAVA_VERSION", System.getProperty("java.version")));
 
     }
+
+
+
+
 
     @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
     @Description("I hate descriptions! See the title!")
