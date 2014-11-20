@@ -159,6 +159,11 @@ public class FirstAllureTest {
         assertThat(4, is(2 + 2));
     }
 
+    @Test(description = "description of from testNg annotation")
+    public void testName7() throws Exception {
+        assertThat(4, is(2 + 2));
+    }
+
 
     String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
 
