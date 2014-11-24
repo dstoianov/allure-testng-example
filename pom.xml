@@ -198,6 +198,21 @@
                 </executions>
             </plugin>-->
 
+            <!--            <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-site-plugin</artifactId>
+                            <version>3.4</version>
+                            <configuration>
+                                <systemPropertyVariables>
+                                    <allure.issues.tracker.pattern>http://google.com/issues/%s</allure.issues.tracker.pattern>
+                                </systemPropertyVariables>
+                                <locales>en</locales>
+                                <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+                                <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                            </configuration>
+                        </plugin>-->
+
+
             <!--mvn versions:display-dependency-updates-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
