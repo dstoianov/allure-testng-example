@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.io.File;
-
 /**
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 28.10.13
@@ -29,7 +27,8 @@ public class WebDriverSteps {
     @Step("Search by \"{0}\"")
     public void search(String text) {
         driver.findElement(By.id("text")).sendKeys(text);
-        driver.findElement(By.className("b-form-button__input")).submit();
+//        driver.findElement(By.className("b-form-button__input")).submit();
+        driver.findElement(By.cssSelector(".arrow2")).submit();
     }
 
     @Attachment(type = "image/png")

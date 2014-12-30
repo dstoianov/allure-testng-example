@@ -1,17 +1,13 @@
 package com.test;
 
 
-import org.junit.Ignore;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.Allure;
@@ -21,8 +17,6 @@ import ru.yandex.qatools.allure.events.AddParameterEvent;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 
 import java.io.File;
-import java.sql.Driver;
-import java.util.Properties;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -34,15 +28,35 @@ import static org.testng.AssertJUnit.fail;
  */
 public class FirstAllureTest {
 
+    String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
+    String json = "{\n" +
+            "    \"glossary\": {\n" +
+            "        \"title\": \"example glossary\",\n" +
+            "\t\t\"GlossDiv\": {\n" +
+            "            \"title\": \"S\",\n" +
+            "\t\t\t\"GlossList\": {\n" +
+            "                \"GlossEntry\": {\n" +
+            "                    \"ID\": \"SGML\",\n" +
+            "\t\t\t\t\t\"SortAs\": \"SGML\",\n" +
+            "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n" +
+            "\t\t\t\t\t\"Acronym\": \"SGML\",\n" +
+            "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n" +
+            "\t\t\t\t\t\"GlossDef\": {\n" +
+            "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n" +
+            "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n" +
+            "                    },\n" +
+            "\t\t\t\t\t\"GlossSee\": \"markup\"\n" +
+            "                }\n" +
+            "            }\n" +
+            "        }\n" +
+            "    }\n" +
+            "}";
     @Parameter("Browser Name")
     private String browser;
-
     @Parameter("Browser Version")
     private String version;
-
     @Parameter("Platform")
     private String platform;
-
     private WebDriver driver;
 
     @BeforeClass
@@ -57,7 +71,9 @@ public class FirstAllureTest {
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Issue("JIRA-254")
@@ -69,7 +85,6 @@ public class FirstAllureTest {
 
         fail();
     }
-
 
     @Issues({
             @Issue("JIRA-1"),
@@ -101,7 +116,6 @@ public class FirstAllureTest {
         String s = allureConfig.getTestSuiteFileSuffix();
     }
 
-
     @Title("This is the Big Title for test")
     @Severity(SeverityLevel.CRITICAL)
     @Features("My Feature")
@@ -119,7 +133,6 @@ public class FirstAllureTest {
         fail();
     }
 
-
     @Title("default.title")
     @Description("default.description")
     @Features("default.feature")
@@ -136,7 +149,6 @@ public class FirstAllureTest {
 
     }
 
-
     @Severity(SeverityLevel.NORMAL)
     @Title("Test with long assertion text")
     @Issue("JIRA-254")
@@ -151,7 +163,6 @@ public class FirstAllureTest {
         makeScreenShot();
     }
 
-
     @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
     @Description("I hate descriptions! See the title!")
     @Test
@@ -163,33 +174,6 @@ public class FirstAllureTest {
     public void testName7() throws Exception {
         assertThat(4, is(2 + 2));
     }
-
-
-    String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
-
-    String json = "{\n" +
-            "    \"glossary\": {\n" +
-            "        \"title\": \"example glossary\",\n" +
-            "\t\t\"GlossDiv\": {\n" +
-            "            \"title\": \"S\",\n" +
-            "\t\t\t\"GlossList\": {\n" +
-            "                \"GlossEntry\": {\n" +
-            "                    \"ID\": \"SGML\",\n" +
-            "\t\t\t\t\t\"SortAs\": \"SGML\",\n" +
-            "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n" +
-            "\t\t\t\t\t\"Acronym\": \"SGML\",\n" +
-            "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n" +
-            "\t\t\t\t\t\"GlossDef\": {\n" +
-            "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n" +
-            "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n" +
-            "                    },\n" +
-            "\t\t\t\t\t\"GlossSee\": \"markup\"\n" +
-            "                }\n" +
-            "            }\n" +
-            "        }\n" +
-            "    }\n" +
-            "}";
-
 
     @Attachment(value = "XML Attachment", type = "text/xml")
     public byte[] xmlAttach() {
