@@ -231,6 +231,52 @@
                 <version>2.1</version>
             </plugin>
 
+            <!--            <plugin>
+                            <groupId>com.github.webdriverextensions</groupId>
+                            <artifactId>webdriverextensions-maven-plugin</artifactId>
+                            <version>1.0.1</version>
+                            <executions>
+                                <execution>
+                                    <goals>
+                                        <goal>install-drivers</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <installationDirectory>${basedir}/src/test/resources/drivers2/</installationDirectory>
+
+                                <drivers>
+                                    <driver>
+                                        <name>internetexplorerdriver</name>
+                                        <platform>windows</platform>
+                                        <bit>32</bit>
+                                        <version>2.44</version>
+                                    </driver>
+                                    <driver>
+                                        <name>internetexplorerdriver</name>
+                                        <platform>windows</platform>
+                                        <bit>64</bit>
+                                        <version>2.44</version>
+                                    </driver>
+                                    <driver>
+                                        <name>chromedriver</name>
+                                        <platform>windows</platform>
+                                        <bit>32</bit>
+                                        <version>2.12</version>
+                                    </driver>
+                                    <driver>
+                                        <name>phantomjs</name>
+                                        <platform>windows</platform>
+                                        <bit>32</bit>
+                                        <version>1.9.8</version>
+                                        <url>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-windows.zip</url>
+                                        <checksum>408552daf818566081512d9ba48440ec</checksum>
+                                    </driver>
+                                </drivers>
+
+                            </configuration>
+                        </plugin>-->
+
         </plugins>
     </build>
 
