@@ -78,6 +78,12 @@
             <version>6.8.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>ru.yandex.qatools.properties</groupId>
+            <artifactId>properties-loader</artifactId>
+            <version>1.5</version>
+        </dependency>
+
         <!--Web Driver-->
         <dependency>
             <groupId>com.github.detro.ghostdriver</groupId>
