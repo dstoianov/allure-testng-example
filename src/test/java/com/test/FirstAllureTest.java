@@ -90,6 +90,7 @@ public class FirstAllureTest {
             @Issue("JIRA-1"),
             @Issue("JIRA-2")
     })
+    @TestCaseId("JIRA-3254")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "some description from test")
     public void testName2() throws Exception {
@@ -152,6 +153,7 @@ public class FirstAllureTest {
     @Severity(SeverityLevel.NORMAL)
     @Title("Test with long assertion text")
     @Issue("JIRA-254")
+    @TestCaseId("JIRA-2547")
     @Test
     public void testName5() throws Exception {
         Allure.LIFECYCLE.fire(new AddParameterEvent("PATH", System.getenv("PATH")));
