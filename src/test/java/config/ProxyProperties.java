@@ -13,10 +13,13 @@ public class ProxyProperties {
 
     @Property("proxy.host")
     private String host = "localhost";
+
     @Property("proxy.port")
     private int port;
+
     @Property("proxy.active")
     private boolean active;
+
     @Property("proxy.ip")
     private String ip = "127.0.0.1";
 
