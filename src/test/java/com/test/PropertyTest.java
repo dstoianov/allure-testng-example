@@ -2,6 +2,9 @@ package com.test;
 
 import config.ProxyProperties;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -10,9 +13,13 @@ import static org.hamcrest.Matchers.is;
 /**
  * Created by Funker on 01.01.2015.
  */
-public class PropertyTests {
 
-    @Test
+@Features("Property Feature")
+@Stories("Property Story Description")
+public class PropertyTest {
+
+    @TestCaseId("JIRA-3277")
+    @Test()
     public void proxySettingsFromFileTest() throws Exception {
         ProxyProperties proxyProperties = new ProxyProperties();
 
@@ -22,7 +29,7 @@ public class PropertyTests {
         assertThat(proxyProperties.getIp(), is("127.0.0.1"));
     }
 
-
+    @TestCaseId("JIRA-3255")
     @Test(dependsOnMethods = "proxySettingsFromFileTest")
     public void proxySettingsFromSystemPropertyTest() throws Exception {
         System.setProperty("proxy.active", "true");

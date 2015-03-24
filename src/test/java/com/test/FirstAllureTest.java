@@ -51,12 +51,16 @@ public class FirstAllureTest {
             "        }\n" +
             "    }\n" +
             "}";
+
     @Parameter("Browser Name")
     private String browser;
+
     @Parameter("Browser Version")
     private String version;
+
     @Parameter("Platform")
     private String platform;
+
     private WebDriver driver;
 
     @BeforeClass
@@ -106,9 +110,13 @@ public class FirstAllureTest {
         String chromeDdriver = System.getProperty("webdriver.chrome.driver");
 
         String issue = System.getProperty("my.test.var");
+        String tracker = System.getProperty("allure.issues.tracker.pattern");
+
         System.out.println("my.test.var                   : ----> " + issue);
-        String direc = System.getProperty("allure.issues.tracker.pattern");
-        System.out.println("allure.issues.tracker.pattern : ----> " + direc);
+        System.out.println("allure.issues.tracker.pattern : ----> " + tracker);
+        System.out.println("phantomjs.binary.path         : ----> " + System.getProperty("phantomjs.binary.path"));
+        System.out.println("webdriver.chrome.driver       : ----> " + System.getProperty("webdriver.chrome.driver"));
+        System.out.println("webdriver.ie.driver           : ----> " + System.getProperty("webdriver.ie.driver"));
 
         String property1 = System.getProperty("project.version");
 

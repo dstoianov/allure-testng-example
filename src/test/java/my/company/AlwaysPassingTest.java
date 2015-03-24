@@ -35,4 +35,10 @@ public class AlwaysPassingTest {
         assertTrue(true);
     }
 
+    @Stories(Behaviors.SimpleStories.FAILED_STORY)
+    @Test
+    public void testFifeFailed() throws Exception {
+        assertTrue(false);
+    }
+
 }
