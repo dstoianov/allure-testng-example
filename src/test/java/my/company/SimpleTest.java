@@ -17,8 +17,8 @@ import static org.testng.Assert.fail;
 public class SimpleTest {
 
     @Test
-    public void simpleTest() throws Exception {
-        assertThat(2, is(2));
+    public void simpleIncorrect1Test() {
+        assertThat("Incorrect", 2, is(3));
     }
 
     @Step
@@ -69,6 +69,15 @@ public class SimpleTest {
         assertThat(parameter, is("second"));
     }
 
+    @Test
+    public void simpleIncorrect2Test() {
+        assertThat("Incorrect", 2, is(3));
+    }
 
+
+    @Test
+    public void simpleIncorrect3Test() {
+        assertThat("Incorrect", 2, is(3));
+    }
 }
 
