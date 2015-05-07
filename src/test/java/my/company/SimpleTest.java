@@ -4,6 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -51,7 +52,7 @@ public class SimpleTest {
     public void skippedByDependencyTest() {
     }
 
-    @Test(enabled = false)
+    @Test(enabled = false, description = "This is pending test, enabled = false")
     public void skippedTest() throws Exception {
     }
 
@@ -74,10 +75,14 @@ public class SimpleTest {
         assertThat("Incorrect", 2, is(3));
     }
 
-
+    @TestCaseId("id-1335")
     @Test
     public void simpleIncorrect3Test() {
         assertThat("Incorrect", 2, is(3));
+    }
+
+    @Test(enabled = false, description = "This is pending test, enabled = false")
+    public void pendingTest() {
     }
 }
 
