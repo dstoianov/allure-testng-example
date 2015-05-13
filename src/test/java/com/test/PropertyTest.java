@@ -1,8 +1,9 @@
 package com.test;
 
-import config.ProxyProperties;
+import config.properties.ProxyProperties;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
 
@@ -18,7 +19,7 @@ import static org.hamcrest.Matchers.is;
 @Stories("Property Story Description")
 public class PropertyTest {
 
-    @TestCaseId("JIRA-3277")
+    @TestCaseId("TC-3277")
     @Test()
     public void proxySettingsFromFileTest() throws Exception {
         ProxyProperties proxyProperties = new ProxyProperties();
@@ -29,7 +30,8 @@ public class PropertyTest {
         assertThat(proxyProperties.getIp(), is("127.0.0.1"));
     }
 
-    @TestCaseId("JIRA-3255")
+    @Issue("BUG-254")
+    @TestCaseId("TC-3255")
     @Test(dependsOnMethods = "proxySettingsFromFileTest")
     public void proxySettingsFromSystemPropertyTest() throws Exception {
         System.setProperty("proxy.active", "true");

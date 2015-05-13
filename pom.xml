@@ -76,13 +76,13 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.5</version>
+            <version>6.9.4</version>
         </dependency>
 
         <dependency>
             <groupId>ru.yandex.qatools.properties</groupId>
             <artifactId>properties-loader</artifactId>
-            <version>1.5</version>
+            <version>1.6</version>
         </dependency>
 
         <!--Web Driver-->
@@ -119,25 +119,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.3</version>
                 <configuration>
                     <source>${compiler.version}</source>
                     <target>${compiler.version}</target>
                 </configuration>
             </plugin>
-            <!--            <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-source-plugin</artifactId>
-                            <version>2.2.1</version>
-                            <executions>
-                                <execution>
-                                    <id>attach-sources</id>
-                                    <goals>
-                                        <goal>jar</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -174,38 +161,6 @@
                 </dependencies>
             </plugin>
 
-
-            <!--          <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-resources-plugin</artifactId>
-                            <version>2.7</version>
-                            <configuration>
-                                <outputDirectory>${project.build.directory}/allure-results</outputDirectory>
-                                <resources>
-                                    <resource>
-                                        <directory>${basedir}/src/java/resources</directory>
-                                        <filtering>true</filtering>
-                                        <includes>
-                                            <include>main.environment.properties</include>
-                                        </includes>
-                                        <excludes>
-                                            <exclude>suite.xml</exclude>
-                                            <exclude>environment.xml</exclude>
-                                        </excludes>
-
-                                    </resource>
-                                </resources>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <goals>
-                                        <goal>copy-resources</goal>
-                                    </goals>
-                                    <phase>test</phase>
-                                </execution>
-                            </executions>
-                        </plugin>-->
-
             <!--            <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-site-plugin</artifactId>
@@ -228,52 +183,28 @@
                 <version>2.1</version>
             </plugin>
 
-            <!--            <plugin>
-                            <groupId>com.github.webdriverextensions</groupId>
-                            <artifactId>webdriverextensions-maven-plugin</artifactId>
-                            <version>1.0.1</version>
-                            <executions>
-                                <execution>
-                                    <goals>
-                                        <goal>install-drivers</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                            <configuration>
-                                <installationDirectory>${basedir}/src/test/resources/drivers2/</installationDirectory>
-
-                                <drivers>
-                                    <driver>
-                                        <name>internetexplorerdriver</name>
-                                        <platform>windows</platform>
-                                        <bit>32</bit>
-                                        <version>2.44</version>
-                                    </driver>
-                                    <driver>
-                                        <name>internetexplorerdriver</name>
-                                        <platform>windows</platform>
-                                        <bit>64</bit>
-                                        <version>2.44</version>
-                                    </driver>
-                                    <driver>
-                                        <name>chromedriver</name>
-                                        <platform>windows</platform>
-                                        <bit>32</bit>
-                                        <version>2.12</version>
-                                    </driver>
-                                    <driver>
-                                        <name>phantomjs</name>
-                                        <platform>windows</platform>
-                                        <bit>32</bit>
-                                        <version>1.9.8</version>
-                                        <url>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-windows.zip</url>
-                                        <checksum>408552daf818566081512d9ba48440ec</checksum>
-                                    </driver>
-                                </drivers>
-
-                            </configuration>
-                        </plugin>-->
-
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <configuration>
+                            <target>
+                                <copy file="${project.basedir}/src/main/resources/environment.properties"
+                                      overwrite="true" todir="${project.basedir}/target/"/>
+                                <copy file="${project.basedir}/src/main/resources/environment.properties"
+                                      overwrite="true" todir="${project.build.directory}/allure-results"/>
+                                <copy file="${project.basedir}/src/main/resources/environment.xml" overwrite="true"
+                                      todir="${project.build.directory}/allure-results"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
