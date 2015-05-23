@@ -18,7 +18,7 @@
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium-java.version>2.43.1</selenium-java.version>
-        <allure.version>1.4.12</allure.version>
+        <allure.version>1.4.13</allure.version>
         <aspectj.version>1.7.4</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
     </properties>
@@ -76,13 +76,14 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.4</version>
+            <version>6.8.5</version>
         </dependency>
 
         <dependency>
             <groupId>ru.yandex.qatools.properties</groupId>
             <artifactId>properties-loader</artifactId>
-            <version>1.6</version>
+            <!--Conflict with 1.6 ver-->
+            <version>1.5</version>
         </dependency>
 
         <!--Web Driver-->
