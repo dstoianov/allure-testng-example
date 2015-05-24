@@ -6,6 +6,12 @@ import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.fail;
@@ -84,5 +90,20 @@ public class SimpleTest {
     @Test(enabled = false, description = "This is pending test, enabled = false")
     public void pendingTest() {
     }
+
+    @Test
+    public void csvAttachmentTest() throws Exception {
+        saveCsvAttachment();
+    }
+
+    @Attachment(value = "Sample csv attachment", type = "text/csv")
+    public byte[] saveCsvAttachment() throws URISyntaxException, IOException {
+        URL resource = getClass().getClassLoader().getResource("sample.csv");
+        if (resource == null) {
+            fail("Couldn't find resource 'sample.csv'");
+        }
+        return Files.readAllBytes(Paths.get(resource.toURI()));
+    }
+
 }
 

@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium-java.version>2.43.1</selenium-java.version>
         <allure.version>1.4.13</allure.version>
-        <aspectj.version>1.7.4</aspectj.version>
+        <aspectj.version>1.8.5</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
     </properties>
 
@@ -140,9 +140,10 @@
                         <webdriver.chrome.driver>${driver.path}/chromedriver.exe</webdriver.chrome.driver>
                         <webdriver.ie.driver>${driver.path}/IEDriverServer.exe</webdriver.ie.driver>
                     </systemPropertyVariables>
-
+                    <!--<testFailureIgnore>true</testFailureIgnore>-->
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        <!--  -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <!-- No need to use it Removed explicit Allure listener notation -->
                     <!-- <properties>
