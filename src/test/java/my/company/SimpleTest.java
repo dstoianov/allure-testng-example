@@ -105,5 +105,34 @@ public class SimpleTest {
         return Files.readAllBytes(Paths.get(resource.toURI()));
     }
 
+    @Test
+    public void htmlAttachmentTest() throws Exception {
+        saveHTMLAttachment();
+    }
+
+    @Attachment(value = "Sample HTML attachment", type = "text/html")
+    public byte[] saveHTMLAttachment() throws URISyntaxException, IOException {
+        String s = "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<body>\n" +
+                "\n" +
+                "<h3>My First Heading</h3>\n" +
+                " <a href=\"http://www.w3schools.com\">This is a link</a> \n" +
+                "\n" +
+                "<table style=\"width:100%\">\n" +
+                "  <tr>\n" +
+                "    <td>Jill</td><td>Smith</td><td>50</td>\n" +
+                "  </tr>\n" +
+                "  <tr>\n" +
+                "    <td>Eve</td><td>Jackson</td><td>94</td>\n" +
+                "  </tr>\n" +
+                "</table>\n" +
+                "\n" +
+                "</body>\n" +
+                "</html>";
+        return s.getBytes();
+    }
+
+
 }
 
