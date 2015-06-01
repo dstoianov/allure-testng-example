@@ -22,7 +22,7 @@ public class PropertyTest {
     @TestCaseId("TC-3277")
     @Test()
     public void proxySettingsFromFileTest() throws Exception {
-        ProxyProperties proxyProperties = new ProxyProperties();
+        ProxyProperties proxyProperties = ProxyProperties.getInstance();
 
         assertThat(proxyProperties.isActive(), equalTo(false));
         assertThat(proxyProperties.getHost(), equalTo("proxy.yandex.ru"));

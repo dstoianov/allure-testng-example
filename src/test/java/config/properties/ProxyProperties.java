@@ -12,6 +12,15 @@ import ru.yandex.qatools.properties.annotations.Resource;
 @Resource.Classpath("proxy.properties")
 public class ProxyProperties {
 
+    private static ProxyProperties instance;
+
+    public static ProxyProperties getInstance() {
+        if (instance == null) {
+            instance = new ProxyProperties();
+        }
+        return instance;
+    }
+
     @Property("proxy.host")
     private String host = "localhost";
 
