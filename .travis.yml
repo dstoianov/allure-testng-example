@@ -15,6 +15,8 @@ before_install:
   - sleep 5
   - export TZ=Europe/Kiev
   - date
+  - pwd
+  - ls
 
 script:
  - mvn clean test
