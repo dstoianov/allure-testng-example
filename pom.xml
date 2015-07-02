@@ -136,7 +136,7 @@
                     <systemPropertyVariables>
                         <allure.issues.tracker.pattern>http://jira.com/issues/%s</allure.issues.tracker.pattern>
                         <my.test.var>ho-oh</my.test.var>
-                        <phantomjs.binary.path>${driver.path}/phantomjs.exe</phantomjs.binary.path>
+                        <!--<phantomjs.binary.path>${driver.path}/phantomjs.exe</phantomjs.binary.path>-->
                         <webdriver.chrome.driver>${driver.path}/chromedriver.exe</webdriver.chrome.driver>
                         <webdriver.ie.driver>${driver.path}/IEDriverServer.exe</webdriver.ie.driver>
                     </systemPropertyVariables>
