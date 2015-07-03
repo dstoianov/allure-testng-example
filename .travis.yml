@@ -17,6 +17,9 @@ before_install:
   - date
   - pwd
   - "ls -lh"
+  - echo "check version of python and ruby"
+  - "python -V"
+  - "ruby -v"
 
 script:
  - mvn clean test
