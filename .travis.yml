@@ -23,11 +23,15 @@ script:
 
 after_script:
   - mvn -Dallure.issues.tracker.pattern=http://google.com/issues/%%s -Dallure.tests.management.pattern=http://google.com/tests/%%s -Dproject.build.sourceEncoding=UTF-8 -Dproject.reporting.outputEncoding=UTF-8 site
-  - sleep 5
+  - sleep 3
   - pwd
   - "ls -lh /home/travis/build/dstoianov/allure-testng-example/target/"
-  - "ls -lh target/"
-  - sleep 5
+  - "ls -lh target/site/allure-maven-plugin/"
+  - "tar -zcvf allure_result.tar.gz target/site/allure-maven-plugin/"
+  - sleep 1
+  - "ls -lh target/site/allure-maven-plugin/"
+  - "ls -lh"
+  - sleep 2
 
 notifications:
  email: false
