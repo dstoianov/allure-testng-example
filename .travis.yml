@@ -16,14 +16,15 @@ before_install:
   - export TZ=Europe/Kiev
   - date
   - pwd
-  - ls -lh
+  - "ls -lh"
 
 script:
  - mvn clean test
 
 after_script:
   - pwd
-  - ls -lh
+  - "ls -lh"
+  - sleep 5
   - mvn -Dallure.issues.tracker.pattern=http://google.com/issues/%%s -Dallure.tests.management.pattern=http://google.com/tests/%%s -Dproject.build.sourceEncoding=UTF-8 -Dproject.reporting.outputEncoding=UTF-8 site
 
 notifications:
