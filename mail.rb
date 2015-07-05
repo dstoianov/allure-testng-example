@@ -2,7 +2,6 @@ require 'mail'
 
 options = {:address => "smtp.gmail.com",
            :port => 587,
-           # :domain               => 'test.techinsight@gmail.com',
            :user_name => 'test.techinsight@gmail.com',
            :password => '22222299',
            :authentication => 'plain',
@@ -17,7 +16,7 @@ end
 Mail.deliver do
   from "Travis CI"
   to "test.techinsight@gmail.com"
-  subject "Test result from Travis-CI, "+Time.now.strftime("%d/%m/%Y %H:%M")
+  subject "Test result from Travis-CI, " + Time.now.strftime("%d/%m/%Y %H:%M")
 
   # body "Hello world"
   html_part do

@@ -70,6 +70,11 @@ public class FirstAllureTest {
         String p2 = System.getProperty("webdriver.chrome.driver");
         String p3 = System.getProperty("webdriver.ie.driver");
 //        driver = new FirefoxDriver();
+        String os = System.getProperty("os.name");
+        if (p1 == null || os.toLowerCase().equalsIgnoreCase("win")) {
+            System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
+        }
+
         driver = new PhantomJSDriver();
     }
 

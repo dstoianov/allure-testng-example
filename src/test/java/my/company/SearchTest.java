@@ -17,6 +17,10 @@ public class SearchTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
+        String os = System.getProperty("os.name");
+        if (os.toLowerCase().contains("win")) {
+            System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
+        }
         steps = new WebDriverSteps(new PhantomJSDriver(new DesiredCapabilities()));
 //        steps = new WebDriverSteps(new FirefoxDriver());
     }
