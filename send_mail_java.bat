@@ -1,0 +1,1 @@
+java -classpath ./target/classes;mail-1.4.7.jar;. mailer.SendMail

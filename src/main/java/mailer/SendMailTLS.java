@@ -19,8 +19,8 @@ import java.util.Properties;
 
 public class SendMailTLS {
 
-    private String username = "test.techinsight@gmail.com";
-    private String password = "22222299";
+    private String username;
+    private String password;
 
     public SendMailTLS(String username, String password) {
         this.username = username;
