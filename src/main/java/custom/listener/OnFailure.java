@@ -1,4 +1,4 @@
-package my.company.steps;
+package custom.listener;
 
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
