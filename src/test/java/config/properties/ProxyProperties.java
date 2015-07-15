@@ -1,8 +1,12 @@
 package config.properties;
 
-import ru.yandex.qatools.properties.PropertyLoader;
-import ru.yandex.qatools.properties.annotations.Property;
-import ru.yandex.qatools.properties.annotations.Resource;
+//import ru.yandex.qatools.properties.PropertyLoader;
+//import ru.yandex.qatools.properties.annotations.Property;
+//import ru.yandex.qatools.properties.annotations.Resource;
+
+import ru.qatools.properties.Property;
+import ru.qatools.properties.PropertyLoader;
+import ru.qatools.properties.Resource;
 
 /**
  * Created by Funker on 01.01.2015.
@@ -34,7 +38,8 @@ public class ProxyProperties {
     private String ip = "127.0.0.1";
 
     public ProxyProperties() {
-        PropertyLoader.populate(this);
+        PropertyLoader.newInstance().populate(this);
+//        PropertyLoader.populate(this);
     }
 
     public String getHost() {

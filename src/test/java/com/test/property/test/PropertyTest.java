@@ -1,4 +1,4 @@
-package com.test;
+package com.test.property.test;
 
 import config.properties.ProxyProperties;
 import org.testng.annotations.Test;
