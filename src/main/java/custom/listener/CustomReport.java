@@ -6,7 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Funker on 15.07.2015.
@@ -17,10 +20,10 @@ public class CustomReport implements IReporter {
 
     @Override
     public void generateReport(List<XmlSuite> arg0, List<ISuite> arg1, String outputDirectory) {
-        // Second parameter of this method ISuite will contain all the suite executed.
 //        File dir = new File(System.getProperty("user.dir") + "/examples/" + outputDirectory);
 //        dir.mkdir();
 
+        // Second parameter of this method ISuite will contain all the suite executed.
         for (ISuite iSuite : arg1) {
             // Get a map of result of a single suite at a time
             Map<String, ISuiteResult> results = iSuite.getResults();
@@ -41,14 +44,22 @@ public class CustomReport implements IReporter {
                 IResultMap resultMap = context.getFailedTests();
                 // Get method detail of failed test cases
                 Collection<ITestNGMethod> failedMethods = resultMap.getAllMethods();
-                // Loop one by one in all failed methods
-                for (ITestNGMethod iTestNGMethod : failedMethods) {
-                    LOGGER.info("--------FAILED TEST CASE---------");
-                    // Print failed test cases detail
-                    LOGGER.info("TESTCASE NAME->" + iTestNGMethod.getMethodName()
-                            + "\nDescription->" + iTestNGMethod.getDescription()
-                            + "\nPriority->" + iTestNGMethod.getPriority()
-                            + "\n:Date->" + new Date(iTestNGMethod.getDate()));
+                if (failedMethods.size() != 0) {
+                    LOGGER.info("--------FAILED TEST(S) CASE---------");
+                    // Loop one by one in all failed methods
+                    for (ITestNGMethod iTestNGMethod : failedMethods) {
+                        StringBuilder sb = new StringBuilder();
+                        // Print failed test cases detail
+                        sb.append("TESTCASE NAME -> ").append(iTestNGMethod.getMethodName());
+                        if (iTestNGMethod.getDescription() != null) {
+                            sb.append("\n\t:Description -> ").append(iTestNGMethod.getDescription());
+                        }
+                        if (iTestNGMethod.getPriority() != 0) {
+                            sb.append("\n\t:Priority -> ").append(iTestNGMethod.getPriority());
+                        }
+//                        sb.append(":Date->" + new Date(iTestNGMethod.getDate()));
+                        LOGGER.info(sb.toString());
+                    }
                 }
             }
         }

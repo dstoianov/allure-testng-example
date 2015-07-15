@@ -15,28 +15,28 @@ import static org.junit.Assert.assertTrue;
 @Stories(Behaviors.SimpleStories.SUCCESS_STORY)
 public class AlwaysPassingTest {
 
-    @Test
+    @Test(priority = 1)
     public void testOne() throws Exception {
-        assertTrue(true);
+        assertTrue(false);
     }
 
-    @Test
+    @Test(priority = 3)
     public void testTwo() throws Exception {
         assertTrue(true);
     }
 
-    @Test
+    @Test(priority = 2, description = "some description")
     public void testThree() throws Exception {
-        assertTrue(true);
+        assertTrue(false);
     }
 
-    @Test
+    @Test(priority = 8)
     public void testFour() throws Exception {
         assertTrue(true);
     }
 
     @Stories(Behaviors.SimpleStories.FAILED_STORY)
-    @Test
+    @Test(description = "description for this failed test")
     public void testFifeFailed() throws Exception {
         assertTrue(false);
     }
