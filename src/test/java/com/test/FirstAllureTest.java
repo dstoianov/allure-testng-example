@@ -24,8 +24,9 @@ import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by dstoianov on 2014-11-06, 6:20 PM
- * E-mail:
+ *
  */
+@Features("Browser tests")
 public class FirstAllureTest {
 
     String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
@@ -91,7 +92,7 @@ public class FirstAllureTest {
     @Test
     public void testName1() throws Exception {
         driver.get("http://google.com.ua");
-
+        makeScreenShot();
         fail();
     }
 
@@ -132,12 +133,11 @@ public class FirstAllureTest {
 
     @Title("This is the Big Title for test")
     @Severity(SeverityLevel.CRITICAL)
-    @Features("My Feature")
     @Stories({"Story1", "Story2"})
     @Test
     public void testName3() throws Exception {
-        driver.get("http://google.co.uk");
-
+        driver.get("http://google.co.uk/ncr");
+        makeScreenShot();
     }
 
     @Title("Test that should fail")
@@ -149,12 +149,11 @@ public class FirstAllureTest {
 
     @Title("default.title")
     @Description("default.description")
-    @Features("default.feature")
     @Stories("default.story")
     @Issue("JIRA-321")
     @Test
     public void testName4() throws Exception {
-        driver.get("http://google.co.uk");
+        driver.get("http://google.co.uk/ncr");
 
         jsonAttach();
         xmlAttach();
@@ -185,7 +184,7 @@ public class FirstAllureTest {
         assertThat(4, is(2 + 2));
     }
 
-    @Test(description = "description of from testNg annotation")
+    @Test(description = "description from TestNG annotation")
     public void testName7() throws Exception {
         assertThat(4, is(2 + 2));
     }

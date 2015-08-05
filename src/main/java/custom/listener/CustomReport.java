@@ -45,12 +45,12 @@ public class CustomReport implements IReporter {
                 // Get method detail of failed test cases
                 Collection<ITestNGMethod> failedMethods = resultMap.getAllMethods();
                 if (failedMethods.size() != 0) {
-                    LOGGER.info("--------FAILED TEST(S) CASE---------");
+                    LOGGER.info("--------FAILED TEST(S) CASE '{}'---------", failedMethods.size());
                     // Loop one by one in all failed methods
                     for (ITestNGMethod iTestNGMethod : failedMethods) {
                         StringBuilder sb = new StringBuilder();
                         // Print failed test cases detail
-                        sb.append("TESTCASE NAME -> ").append(iTestNGMethod.getMethodName());
+                        sb.append("TESTCASE NAME -> ").append(iTestNGMethod.getMethodName()); //iTestNGMethod.getTestClass().getName()
                         if (iTestNGMethod.getDescription() != null) {
                             sb.append("\n\t:Description -> ").append(iTestNGMethod.getDescription());
                         }

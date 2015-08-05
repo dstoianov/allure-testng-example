@@ -34,6 +34,7 @@ public class CustomListener extends TestListenerAdapter {
     public void onTestStart(ITestResult arg0) {
         String[] methodsDependedUpon = arg0.getMethod().getMethodsDependedUpon();
 
+        //print test class name
         LOGGER.info(arg0.getMethod().getTestClass().toString());
 
         log(TEST_NAME_TEMPLATE, arg0.getName());

@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public class OnFailure extends TestListenerAdapter {
 
-    @Step("Hi, I'm step in your testng listener")
+    @Step("Hi, I'm step in your TestNG listener")
     @Override
     public void onTestFailure(ITestResult tr) {
         createAttachment();
