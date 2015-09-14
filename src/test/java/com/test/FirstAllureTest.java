@@ -74,8 +74,10 @@ public class FirstAllureTest {
         String os = System.getProperty("os.name");
         System.out.println("Detected os is " + os);
 
-        if (p1 == null || os.toLowerCase().equalsIgnoreCase("win")) {
-            System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
+        if (!os.equalsIgnoreCase("linux")) {
+            if (p1 == null || os.toLowerCase().equalsIgnoreCase("win")) {
+                System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
+            }
         }
 
         driver = new PhantomJSDriver();
