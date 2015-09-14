@@ -72,6 +72,8 @@ public class FirstAllureTest {
         String p3 = System.getProperty("webdriver.ie.driver");
 //        driver = new FirefoxDriver();
         String os = System.getProperty("os.name");
+        System.out.println("Detected os is " + os);
+
         if (p1 == null || os.toLowerCase().equalsIgnoreCase("win")) {
             System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
         }
@@ -158,7 +160,7 @@ public class FirstAllureTest {
         jsonAttach();
         xmlAttach();
         makeScreenShot();
-        fail();
+        fail("some message for fail");
 
     }
 

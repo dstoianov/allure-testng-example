@@ -15,13 +15,13 @@ import java.util.Arrays;
 
 public class CustomListener extends TestListenerAdapter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(CustomListener.class);
 
 
     private static final String TEST_NAME_TEMPLATE = "<< %s >>";
 
     private void log(String msg, Object... args) {
-        LOGGER.info(String.format(msg, args));
+        logger.info(String.format(msg, args));
     }
 
     @Override
@@ -35,10 +35,10 @@ public class CustomListener extends TestListenerAdapter {
         String[] methodsDependedUpon = arg0.getMethod().getMethodsDependedUpon();
 
         //print test class name
-        LOGGER.info(arg0.getMethod().getTestClass().toString());
+        logger.info(arg0.getMethod().getTestClass().toString());
 
         log(TEST_NAME_TEMPLATE, arg0.getName());
-        LOGGER.info("Test parameters {}", Arrays.toString(arg0.getParameters()));
+        logger.info("Test parameters {}", Arrays.toString(arg0.getParameters()));
         if (methodsDependedUpon != null && methodsDependedUpon.length > 0) {
             log("Depends on %s", Arrays.toString(methodsDependedUpon));
         }
@@ -51,11 +51,11 @@ public class CustomListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        LOGGER.error(tr.getName() + " --- FAILED --- ");
+        logger.error(tr.getName() + " --- FAILED --- ");
         Throwable ex = tr.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
-            LOGGER.error(cause + "\n");
+            logger.error(cause + "\n");
         }
     }
 
@@ -65,7 +65,7 @@ public class CustomListener extends TestListenerAdapter {
         Throwable ex = tr.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
-            LOGGER.error(cause + "\n");
+            logger.error(cause + "\n");
         }
     }
 

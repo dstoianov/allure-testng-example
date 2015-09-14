@@ -18,7 +18,7 @@
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium-java.version>2.43.1</selenium-java.version>
-        <allure.version>1.4.15</allure.version>
+        <allure.version>1.4.17</allure.version>
         <aspectj.version>1.8.5</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
     </properties>
@@ -205,7 +205,8 @@
                             <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
                         </property>
                     </properties>
-
+                    <printSummary>false</printSummary>
+                    <reportNameSuffix>YANDEX</reportNameSuffix>
                 </configuration>
                 <dependencies>
                     <dependency>

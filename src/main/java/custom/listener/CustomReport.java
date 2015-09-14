@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class CustomReport implements IReporter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomReport.class);
+    private static final Logger logger = LoggerFactory.getLogger(CustomReport.class);
 
     @Override
     public void generateReport(List<XmlSuite> arg0, List<ISuite> arg1, String outputDirectory) {
@@ -34,7 +34,7 @@ public class CustomReport implements IReporter {
                 // The Context object of current result
                 ITestContext context = results.get(key).getTestContext();
                 // Print Suite detail in Console
-                LOGGER.info("Suite Name->" + context.getName()
+                logger.info("Suite Name->" + context.getName()
                         + "\n::Report output Directory->" + context.getOutputDirectory()
                         + "\n::Suite Name->" + context.getSuite().getName()
                         + "\n::Start Date Time for execution->" + context.getStartDate()
@@ -45,7 +45,7 @@ public class CustomReport implements IReporter {
                 // Get method detail of failed test cases
                 Collection<ITestNGMethod> failedMethods = resultMap.getAllMethods();
                 if (failedMethods.size() != 0) {
-                    LOGGER.info("--------FAILED TEST(S) CASE '{}'---------", failedMethods.size());
+                    logger.info("--------FAILED TEST(S) CASE '{}'---------", failedMethods.size());
                     // Loop one by one in all failed methods
                     for (ITestNGMethod iTestNGMethod : failedMethods) {
                         StringBuilder sb = new StringBuilder();
@@ -58,7 +58,7 @@ public class CustomReport implements IReporter {
                             sb.append("\n\t:Priority -> ").append(iTestNGMethod.getPriority());
                         }
 //                        sb.append(":Date->" + new Date(iTestNGMethod.getDate()));
-                        LOGGER.info(sb.toString());
+                        logger.info(sb.toString());
                     }
                 }
             }
