@@ -17,8 +17,8 @@
     <properties>
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium-java.version>2.43.1</selenium-java.version>
-        <!--<selenium-java.version>2.47.1</selenium-java.version>-->
+        <!--<selenium-java.version>2.43.1</selenium-java.version>-->
+        <selenium-java.version>2.47.1</selenium-java.version>
         <allure.version>1.4.17</allure.version>
         <aspectj.version>1.8.5</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
@@ -96,9 +96,9 @@
         <!--Web Driver-->
 
                 <dependency>
-                    <groupId>com.github.detro.ghostdriver</groupId>
+                    <groupId>com.github.detro</groupId>
                     <artifactId>phantomjsdriver</artifactId>
-                    <version>1.1.0</version>
+                    <version>1.2.0</version>
                     <exclusions>
                         <exclusion>
                             <groupId>org.seleniumhq.selenium</groupId>

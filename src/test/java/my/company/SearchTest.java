@@ -1,7 +1,7 @@
 package my.company;
 
 import my.company.steps.WebDriverSteps;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -22,8 +22,8 @@ public class SearchTest {
         if (os.toLowerCase().contains("win")) {
             System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
         }
-        steps = new WebDriverSteps(new PhantomJSDriver());
-//        steps = new WebDriverSteps(new FirefoxDriver());
+//        steps = new WebDriverSteps(new PhantomJSDriver());
+        steps = new WebDriverSteps(new FirefoxDriver());
     }
 
 
