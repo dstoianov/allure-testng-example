@@ -2,7 +2,6 @@ package my.company;
 
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +11,7 @@ import ru.yandex.qatools.allure.annotations.Features;
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 24.11.13
  */
-@Features("Browser test")
+@Features("Browser test Yandex")
 public class SearchTest {
 
     private WebDriverSteps steps;
@@ -23,7 +22,7 @@ public class SearchTest {
         if (os.toLowerCase().contains("win")) {
             System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
         }
-        steps = new WebDriverSteps(new PhantomJSDriver(new DesiredCapabilities()));
+        steps = new WebDriverSteps(new PhantomJSDriver());
 //        steps = new WebDriverSteps(new FirefoxDriver());
     }
 
