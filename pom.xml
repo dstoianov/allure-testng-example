@@ -17,8 +17,8 @@
     <properties>
         <compiler.version>1.7</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<selenium-java.version>2.43.1</selenium-java.version>-->
-        <selenium-java.version>2.47.1</selenium-java.version>
+        <selenium-java.version>2.43.1</selenium-java.version>
+        <!--<selenium-java.version>2.47.1</selenium-java.version>-->
         <allure.version>1.4.17</allure.version>
         <aspectj.version>1.8.5</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
@@ -94,7 +94,7 @@
         </dependency>
 
         <!--Web Driver-->
-        <!--
+
                 <dependency>
                     <groupId>com.github.detro.ghostdriver</groupId>
                     <artifactId>phantomjsdriver</artifactId>
@@ -110,24 +110,23 @@
                         </exclusion>
                     </exclusions>
                 </dependency>
-        -->
 
 
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.2.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--        <dependency>
+                    <groupId>com.codeborne</groupId>
+                    <artifactId>phantomjsdriver</artifactId>
+                    <version>1.2.1</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.seleniumhq.selenium</groupId>
+                            <artifactId>selenium-remote-driver</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.seleniumhq.selenium</groupId>
+                            <artifactId>selenium-server</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>-->
 
         <!--Matchers-->
         <dependency>
