@@ -115,7 +115,7 @@ public class FirstAllureTest {
         version = cap.getVersion();
         platform = cap.getPlatform().toString();
 
-        driver.get("http://google.com.ua");
+        driver.get("http://google.com.ua/ncr");
 
         String chromeDdriver = System.getProperty("webdriver.chrome.driver");
 
@@ -140,7 +140,7 @@ public class FirstAllureTest {
     @Stories({"Story1", "Story2"})
     @Test
     public void testName3() throws Exception {
-        driver.get("http://google.co.uk/ncr");
+        driver.get("https://www.google.co.uk");
         makeScreenShot();
     }
 
