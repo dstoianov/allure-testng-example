@@ -27,8 +27,7 @@ public class WebDriverSteps {
     @Step("Search by \"{0}\"")
     public void search(String text) {
         driver.findElement(By.id("text")).sendKeys(text);
-//        driver.findElement(By.className("b-form-button__input")).submit();
-        driver.findElement(By.cssSelector(".arrow2")).submit();
+        driver.findElement(By.cssSelector(".search2__button")).submit();
     }
 
     @Attachment(type = "image/png")
