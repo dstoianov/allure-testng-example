@@ -115,7 +115,7 @@ public class FirstAllureTest {
         version = cap.getVersion();
         platform = cap.getPlatform().toString();
 
-        driver.get("http://google.com.ua/ncr");
+        driver.get("http://google.com.ua");
 
         String chromeDdriver = System.getProperty("webdriver.chrome.driver");
 
@@ -140,7 +140,7 @@ public class FirstAllureTest {
     @Stories({"Story1", "Story2"})
     @Test
     public void testName3() throws Exception {
-        driver.get("https://www.google.co.uk");
+        driver.get("https://www.google.com/ncr");
         makeScreenShot();
     }
 
@@ -157,7 +157,7 @@ public class FirstAllureTest {
     @Issue("JIRA-321")
     @Test
     public void testName4() throws Exception {
-        driver.get("http://google.co.uk/ncr");
+        driver.get("http://google.co.uk");
 
         jsonAttach();
         xmlAttach();
