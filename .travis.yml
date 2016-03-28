@@ -1,7 +1,7 @@
 language: java
 
 jdk:
- - oraclejdk7
+ - oraclejdk8
 
 before_install:
   - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
@@ -33,4 +33,4 @@ after_script:
   - "ruby mail.rb"
 
 notifications:
- email: false
+ email: test.techinsight@gmail.com
