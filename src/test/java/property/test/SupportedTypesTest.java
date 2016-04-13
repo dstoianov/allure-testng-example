@@ -1,4 +1,4 @@
-package com.test.property.test;
+package property.test;
 
 import config.properties.PropEnum;
 import config.properties.SupportedTypesProperties;

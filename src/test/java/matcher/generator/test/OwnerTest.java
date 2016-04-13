@@ -3,7 +3,7 @@ package matcher.generator.test;
 import matcher.generator.bean.Owner;
 import matcher.generator.bean.OwnerMatchers;
 import org.hamcrest.Matcher;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.lang.reflect.Field;
 
@@ -16,6 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Time: 14:28
  */
 public class OwnerTest {
+
     @Test
     public void shouldBeEmailFieldInOwner() throws Exception {
         Field email = Owner.class.getDeclaredField("email");
@@ -49,7 +50,7 @@ public class OwnerTest {
         assertThat(OwnerMatchers.class.getDeclaredMethod("withUid", Matcher.class), notNullValue());
     }
 
-    @Test(expected = NoSuchMethodException.class)
+    @Test(expectedExceptions = NoSuchMethodException.class)
     public void shouldNotFindMatcherForNameField() throws Exception {
         OwnerMatchers.class.getDeclaredMethod("withName", Matcher.class);
     }

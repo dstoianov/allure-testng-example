@@ -2,7 +2,7 @@ package matcher.generator.test;
 
 import matcher.generator.bean.LordMatchers;
 import org.hamcrest.Matcher;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 import java.util.stream.Stream;
