@@ -18,7 +18,7 @@
         <compiler.version>1.8</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--<selenium-java.version>2.43.1</selenium-java.version>-->
-        <selenium-java.version>2.52.0</selenium-java.version>
+        <selenium-java.version>2.53.0</selenium-java.version>
         <allure.version>1.4.22</allure.version>
         <aspectj.version>1.8.7</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.5</version>
+            <version>6.9.5</version>
         </dependency>
 
         <dependency>
@@ -105,8 +105,8 @@
         </dependency>
 
         <!--<dependency>-->
-        <!--<groupId>ru.yandex.qatools.properties</groupId>-->
-        <!--<artifactId>properties-loader</artifactId>-->
+        <!--<groupId>ru.yandex.qatools.config.properties</groupId>-->
+        <!--<artifactId>config.properties-loader</artifactId>-->
         <!--&lt;!&ndash;Conflict with 1.6 ver&ndash;&gt;-->
         <!--<version>1.5</version>-->
         <!--</dependency>-->
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.18</version>
+            <version>1.7.21</version>
         </dependency>
         <!-- this lib need just for logger dependency -->
         <dependency>
@@ -215,6 +215,15 @@
             <version>4.0</version>
             <scope>test</scope>
         </dependency>
+
+
+        <!--Reporting  extent report-->
+        <dependency>
+            <groupId>com.relevantcodes</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>2.40.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -255,12 +264,12 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <!-- No need to use it Removed explicit Allure listener notation -->
-                    <!-- <properties>
+                    <!-- <config.properties>
                          <property>
                              <name>listener</name>
                              <value>ru.yandex.qatools.allure.testng.AllureTestListener</value>
                          </property>
-                     </properties>-->
+                     </config.properties>-->
 
                     <properties>
                         <property>
@@ -295,9 +304,9 @@
                         <phase>pre-site</phase>
                         <configuration>
                             <target>
-                                <copy file="${project.basedir}/src/main/resources/environment.properties"
+                                <copy file="${project.basedir}/src/main/resources/environment.config.properties"
                                       overwrite="true" todir="${project.basedir}/target/"/>
-                                <copy file="${project.basedir}/src/main/resources/environment.properties"
+                                <copy file="${project.basedir}/src/main/resources/environment.config.properties"
                                       overwrite="true" todir="${project.build.directory}/allure-results"/>
                                 <copy file="${project.basedir}/src/main/resources/environment.xml" overwrite="true"
                                       todir="${project.build.directory}/allure-results"/>

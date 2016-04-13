@@ -16,15 +16,15 @@ import java.util.Set;
  */
 public class CustomReport implements IReporter {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomReport.class);
+    private static final Logger log = LoggerFactory.getLogger(CustomReport.class);
 
     @Override
-    public void generateReport(List<XmlSuite> arg0, List<ISuite> arg1, String outputDirectory) {
+    public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
 //        File dir = new File(System.getProperty("user.dir") + "/examples/" + outputDirectory);
 //        dir.mkdir();
 
         // Second parameter of this method ISuite will contain all the suite executed.
-        for (ISuite iSuite : arg1) {
+        for (ISuite iSuite : suites) {
             // Get a map of result of a single suite at a time
             Map<String, ISuiteResult> results = iSuite.getResults();
             // Get the key of the result map
@@ -34,7 +34,7 @@ public class CustomReport implements IReporter {
                 // The Context object of current result
                 ITestContext context = results.get(key).getTestContext();
                 // Print Suite detail in Console
-                logger.info("Suite Name->" + context.getName()
+                log.info("Suite Name->" + context.getName()
                         + "\n::Report output Directory->" + context.getOutputDirectory()
                         + "\n::Suite Name->" + context.getSuite().getName()
                         + "\n::Start Date Time for execution->" + context.getStartDate()
@@ -45,7 +45,7 @@ public class CustomReport implements IReporter {
                 // Get method detail of failed test cases
                 Collection<ITestNGMethod> failedMethods = resultMap.getAllMethods();
                 if (failedMethods.size() != 0) {
-                    logger.info("--------FAILED TEST(S) CASE '{}'---------", failedMethods.size());
+                    log.info("--------FAILED TEST(S) CASE '{}'---------", failedMethods.size());
                     // Loop one by one in all failed methods
                     for (ITestNGMethod iTestNGMethod : failedMethods) {
                         StringBuilder sb = new StringBuilder();
@@ -58,7 +58,7 @@ public class CustomReport implements IReporter {
                             sb.append("\n\t:Priority -> ").append(iTestNGMethod.getPriority());
                         }
 //                        sb.append(":Date->" + new Date(iTestNGMethod.getDate()));
-                        logger.info(sb.toString());
+                        log.info(sb.toString());
                     }
                 }
             }

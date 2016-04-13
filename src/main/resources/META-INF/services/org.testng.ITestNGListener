@@ -1,3 +1,4 @@
 custom.listener.CustomReport
 custom.listener.CustomListener
 custom.listener.OnFailure
+custom.listener.ExtentReport

@@ -1,7 +1,6 @@
 package custom.listener;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -12,22 +11,22 @@ import java.util.Arrays;
 /**
  * Created by Funker on 15.07.2015.
  */
-
+@Slf4j
 public class CustomListener extends TestListenerAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomListener.class);
+//    private static final Logger log = LoggerFactory.getLogger(CustomListener.class);
 
 
-    private static final String TEST_NAME_TEMPLATE = "<< %s >>";
+//    private static final String TEST_NAME_TEMPLATE = "<< %s >>";
 
-    private void log(String msg, Object... args) {
-        logger.info(String.format(msg, args));
-    }
+//    private void log(String msg, Object... args) {
+//        log.info(String.format(msg, args));
+//    }
 
     @Override
     public void onStart(ITestContext arg0) {
-        log("Test suite: " + arg0.getName());
-        log("Parameters " + arg0.getCurrentXmlTest().getAllParameters().toString());
+        log.info("Test suite: {}", arg0.getName());
+        log.info("Parameters {}", arg0.getCurrentXmlTest().getAllParameters().toString());
     }
 
     @Override
@@ -35,37 +34,37 @@ public class CustomListener extends TestListenerAdapter {
         String[] methodsDependedUpon = arg0.getMethod().getMethodsDependedUpon();
 
         //print test class name
-        logger.info(arg0.getMethod().getTestClass().toString());
+        log.info(arg0.getMethod().getTestClass().toString());
 
-        log(TEST_NAME_TEMPLATE, arg0.getName());
-        logger.info("Test parameters {}", Arrays.toString(arg0.getParameters()));
+        log.info("<< %s >>", arg0.getName());
+        log.info("Test parameters {}", Arrays.toString(arg0.getParameters()));
         if (methodsDependedUpon != null && methodsDependedUpon.length > 0) {
-            log("Depends on %s", Arrays.toString(methodsDependedUpon));
+            log.info("Depends on {}", Arrays.toString(methodsDependedUpon));
         }
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        log("%s --- SUCCESS ---\n", tr.getName());
+        log.info("{} --- SUCCESS ---\n", tr.getName());
     }
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        logger.error(tr.getName() + " --- FAILED --- ");
+        log.error(tr.getName() + " --- FAILED --- ");
         Throwable ex = tr.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
-            logger.error(cause + "\n");
+            log.error(cause + "\n");
         }
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        log("%s --- SKIPPED ---\n", tr.getName());
+        log.info("%s --- SKIPPED ---\n", tr.getName());
         Throwable ex = tr.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
-            logger.error(cause + "\n");
+            log.error(cause + "\n");
         }
     }
 
