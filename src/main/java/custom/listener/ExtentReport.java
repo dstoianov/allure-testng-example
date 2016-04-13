@@ -20,7 +20,7 @@ public class ExtentReport implements IReporter {
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        extent = new ExtentReports(outputDirectory + "/target/extent/index.html", true);
+        extent = new ExtentReports(outputDirectory + "/extent/index.html", true);
 
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> result = suite.getResults();
