@@ -16,59 +16,53 @@ public class CustomListener extends TestListenerAdapter {
 
 //    private static final Logger log = LoggerFactory.getLogger(CustomListener.class);
 
-
-//    private static final String TEST_NAME_TEMPLATE = "<< %s >>";
-
-//    private void log(String msg, Object... args) {
-//        log.info(String.format(msg, args));
-//    }
-
     @Override
-    public void onStart(ITestContext arg0) {
-        log.info("Test suite: {}", arg0.getName());
-        log.info("Parameters {}", arg0.getCurrentXmlTest().getAllParameters().toString());
+    public void onStart(ITestContext context) {
+        log.info("Test suite: {}", context.getName());
+        log.info("Parameters {}", context.getCurrentXmlTest().getAllParameters().toString());
     }
 
     @Override
-    public void onTestStart(ITestResult arg0) {
-        String[] methodsDependedUpon = arg0.getMethod().getMethodsDependedUpon();
+    public void onTestStart(ITestResult result) {
+        String[] methodsDependedUpon = result.getMethod().getMethodsDependedUpon();
 
         //print test class name
-        log.info(arg0.getMethod().getTestClass().toString());
+        log.info(result.getMethod().getTestClass().toString());
 
-        log.info("<< %s >>", arg0.getName());
-        log.info("Test parameters {}", Arrays.toString(arg0.getParameters()));
+        log.info("<< {} >>", result.getName());
+        log.info("Test parameters {}", Arrays.toString(result.getParameters()));
         if (methodsDependedUpon != null && methodsDependedUpon.length > 0) {
             log.info("Depends on {}", Arrays.toString(methodsDependedUpon));
         }
+        super.onTestStart(result);
     }
 
     @Override
-    public void onTestSuccess(ITestResult tr) {
-        log.info("{} --- SUCCESS ---\n", tr.getName());
+    public void onTestSuccess(ITestResult result) {
+        log.info("{} --- SUCCESS ---\n", result.getName());
+        super.onTestSuccess(result);
     }
 
     @Override
-    public void onTestFailure(ITestResult tr) {
-        log.error(tr.getName() + " --- FAILED --- ");
-        Throwable ex = tr.getThrowable();
+    public void onTestFailure(ITestResult result) {
+        log.error(" {} --- FAILED --- \n", result.getName());
+        Throwable ex = result.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
             log.error(cause + "\n");
         }
+        super.onTestFailure(result);
     }
 
     @Override
-    public void onTestSkipped(ITestResult tr) {
-        log.info("%s --- SKIPPED ---\n", tr.getName());
-        Throwable ex = tr.getThrowable();
+    public void onTestSkipped(ITestResult result) {
+        log.info("{} --- SKIPPED ---\n", result.getName());
+        Throwable ex = result.getThrowable();
         if (ex != null) {
             String cause = ex.toString();
             log.error(cause + "\n");
         }
+        super.onTestSkipped(result);
     }
 
-    public long timer(ITestResult tr) {
-        return tr.getEndMillis() - tr.getStartMillis();
-    }
 }

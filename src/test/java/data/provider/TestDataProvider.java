@@ -1,5 +1,6 @@
 package data.provider;
 
+import bean.TestParameters;
 import org.testng.annotations.DataProvider;
 
 /**
@@ -7,8 +8,8 @@ import org.testng.annotations.DataProvider;
  */
 public class TestDataProvider {
 
-    @DataProvider(name = "BasicDataProvider")
-    public Object[][] getTestData() {
+    @DataProvider(name = "basicData")
+    public static Object[][] getTestData() {
         Object[][] result = new Object[][]{
                 {new TestParameters("Germany", "Sample test 1")},
                 {new TestParameters("Austria", "Sample test 2")},

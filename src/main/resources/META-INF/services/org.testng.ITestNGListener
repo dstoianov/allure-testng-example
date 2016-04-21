@@ -1,4 +1,5 @@
 custom.listener.CustomReport
+custom.listener.ChangeTestNameListener
 custom.listener.CustomListener
 custom.listener.OnFailure
-custom.listener.ExtentReport
+
