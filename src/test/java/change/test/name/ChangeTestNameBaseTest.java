@@ -1,4 +1,4 @@
-package data.provider;
+package change.test.name;
 
 import bean.TestParameters;
 import org.testng.ITest;
