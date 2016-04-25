@@ -19,7 +19,7 @@ public class ChangeTestNameBaseTest implements ITest {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void initPages(Method method, Object[] parameters) {
+    public void beforeMethod(Method method, Object[] parameters) {
         testName = method.getName();
         if (parameters.length > 0) {
             for (Object parameter : parameters) {

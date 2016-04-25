@@ -34,11 +34,11 @@ public class CustomReport implements IReporter {
                 // The Context object of current result
                 ITestContext context = results.get(key).getTestContext();
                 // Print Suite detail in Console
-                log.info("Suite Name->" + context.getName()
-                        + "\n::Report output Directory->" + context.getOutputDirectory()
-                        + "\n::Suite Name->" + context.getSuite().getName()
-                        + "\n::Start Date Time for execution->" + context.getStartDate()
-                        + "\n::End   Date Time for execution->" + context.getEndDate());
+                log.info("Suite Name -> " + context.getName()
+                        + "\n::Report output Directory -> " + context.getOutputDirectory()
+                        + "\n::Suite Name -> " + context.getSuite().getName()
+                        + "\n::Start Date Time for execution -> " + context.getStartDate()
+                        + "\n::End   Date Time for execution -> " + context.getEndDate());
 
                 // Get Map for only failed test cases
                 IResultMap resultMap = context.getFailedTests();

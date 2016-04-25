@@ -277,7 +277,7 @@
                             <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
                         </property>
                     </properties>
-                    <printSummary>false</printSummary>
+                    <printSummary>true</printSummary>
                     <reportNameSuffix>YANDEX</reportNameSuffix>
                 </configuration>
                 <dependencies>

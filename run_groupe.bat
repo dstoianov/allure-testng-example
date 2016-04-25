@@ -1,2 +1,2 @@
 @echo on
-mvn clean test -Dtest=ChangeNameOfTestV1
+mvn clean test -Dgroups=change_name site

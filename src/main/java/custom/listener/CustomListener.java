@@ -30,7 +30,9 @@ public class CustomListener extends TestListenerAdapter {
         log.info(result.getMethod().getTestClass().toString());
 
         log.info("<< {} >>", result.getName());
-        log.info("Test parameters {}", Arrays.toString(result.getParameters()));
+        if (result.getParameters().length > 0) {
+            log.info("Test parameters {}", Arrays.toString(result.getParameters()));
+        }
         if (methodsDependedUpon != null && methodsDependedUpon.length > 0) {
             log.info("Depends on {}", Arrays.toString(methodsDependedUpon));
         }
