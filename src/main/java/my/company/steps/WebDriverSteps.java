@@ -13,7 +13,7 @@ import ru.yandex.qatools.allure.annotations.Step;
  */
 public class WebDriverSteps {
 
-    public WebDriver driver;
+    private WebDriver driver;
 
     public WebDriverSteps(WebDriver driver) {
         this.driver = driver;
@@ -36,6 +36,8 @@ public class WebDriverSteps {
     }
 
     public void quit() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
