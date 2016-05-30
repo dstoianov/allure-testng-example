@@ -1,6 +1,7 @@
 package com.test;
 
 
+import com.company.Behaviors;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -24,13 +25,12 @@ import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by dstoianov on 2014-11-06, 6:20 PM
- *
  */
-@Features("Browser tests")
+@Features(Behaviors.Feature.BROWSER)
 public class FirstAllureTest {
 
-    String s = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
-    String json = "{\n" +
+    String xmlAttachmnet = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
+    String jsonAttachmet = "{\n" +
             "    \"glossary\": {\n" +
             "        \"title\": \"example glossary\",\n" +
             "\t\t\"GlossDiv\": {\n" +
@@ -195,12 +195,12 @@ public class FirstAllureTest {
 
     @Attachment(value = "XML Attachment", type = "text/xml")
     public byte[] xmlAttach() {
-        return s.getBytes();
+        return xmlAttachmnet.getBytes();
     }
 
-    @Attachment(value = "JSON Attachment", type = "application/json")
+    @Attachment(value = "JSON Attachment", type = "application/jsonAttachmet")
     public byte[] jsonAttach() {
-        return json.getBytes();
+        return jsonAttachmet.getBytes();
     }
 
     @Attachment(value = "PNG wd Attachment", type = "image/png")

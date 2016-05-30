@@ -61,7 +61,7 @@ public class TestWithSteps {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(String.format("Sleep for '%s' ms", millis));
+        System.out.println(String.format("Sleep for '%xmlAttachmnet' ms", millis));
     }
 
 }

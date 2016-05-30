@@ -28,7 +28,8 @@ public abstract class BrowserBase {
     }
 
     private void setSystemPathForDrivers() {
-        String path = "./src/test/resources/drivers/";
+        String pathHome = System.getProperty("user.dir");
+        String path = String.format("%s/src/test/resources/drivers/", pathHome);
         String osName = OperatingSystem.getOperatingSystem().name();
 
         if (osName.equalsIgnoreCase(OperatingSystem.WINDOWS.name())) {
@@ -46,8 +47,9 @@ public abstract class BrowserBase {
         }
 
         log.info("Detected OS is '{}'", osName);
-        log.info("Chrome driver path is '{}'", System.getProperty("webdriver.chrome.driver"));
-        log.info("IE driver path is '{}'", System.getProperty("webdriver.ie.driver"));
+        log.info("Chrome driver path is    '{}'", System.getProperty("webdriver.chrome.driver"));
+        log.info("PhantomJS driver path is '{}'", System.getProperty("phantomjs.binary.path"));
+        log.info("IE driver path is        '{}'", System.getProperty("webdriver.ie.driver"));
     }
 
 }
