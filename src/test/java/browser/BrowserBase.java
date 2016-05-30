@@ -5,13 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import ru.yandex.qatools.allure.annotations.Features;
 
 /**
  * Created by Funker on 30.05.2016.
  */
 @Slf4j
-@Features("Browser Tests")
 public abstract class BrowserBase {
 
     protected WebDriverSteps steps;

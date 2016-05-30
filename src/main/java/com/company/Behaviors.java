@@ -5,8 +5,14 @@ package com.company;
  *         Date: 12/9/13
  */
 public class Behaviors {
-    public class SimpleStories {
+
+    public class Feature {
+        public static final String BROWSER = "Browser Tests";
+    }
+
+    public class Story {
         public static final String title = "Simple Stories";
+        public static final String BROWSER = "Browser";
         public static final String SUCCESS_STORY = "Success Story";
         public static final String FAILED_STORY = "Failed Story";
         public static final String SIMPLE_STORY = "Simple Story Description";

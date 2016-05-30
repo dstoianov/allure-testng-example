@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
  * @author Boris Serdyuk just-boris@yandex-team.ru
  *         Date: 12/12/13
  */
-@Features(Behaviors.SimpleStories.title)
-@Stories(Behaviors.SimpleStories.SUCCESS_STORY)
+@Features(Behaviors.Story.title)
+@Stories(Behaviors.Story.SUCCESS_STORY)
 public class AlwaysPassingTest {
 
     @Test(priority = 1)
@@ -35,7 +35,7 @@ public class AlwaysPassingTest {
         assertTrue(true);
     }
 
-    @Stories(Behaviors.SimpleStories.FAILED_STORY)
+    @Stories(Behaviors.Story.FAILED_STORY)
     @Test(description = "description for this failed test")
     public void testFifeFailed() throws Exception {
         assertTrue(false);

@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
  */
 
 @Features("Steps Feature")
-@Stories(Behaviors.SimpleStories.SIMPLE_STORY)
+@Stories(Behaviors.Story.SIMPLE_STORY)
 public class TestWithSteps {
 
     @Title("Test with 3 steps and 1 nested step")
