@@ -18,6 +18,7 @@ import ru.yandex.qatools.allure.events.AddParameterEvent;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -66,19 +67,10 @@ public class FirstAllureTest {
 
     @BeforeClass
     public void setUp() {
-
         String p1 = System.getProperty("phantomjs.binary.path");
         String p2 = System.getProperty("webdriver.chrome.driver");
         String p3 = System.getProperty("webdriver.ie.driver");
-//        driver = new FirefoxDriver();
         String os = System.getProperty("os.name");
-        System.out.println("Detected os is " + os);
-
-        if (!os.equalsIgnoreCase("linux")) {
-            if (p1 == null || os.toLowerCase().equalsIgnoreCase("win")) {
-                System.setProperty("phantomjs.binary.path", "./src/test/resources/drivers/phantomjs.exe");
-            }
-        }
 
         driver = new FirefoxDriver();
     }
@@ -94,7 +86,7 @@ public class FirstAllureTest {
     @Description("some description for this test")
     @Severity(SeverityLevel.MINOR)
     @Test
-    public void testName1() throws Exception {
+    public void testName1() {
         driver.get("http://google.com.ua");
         makeScreenShot();
         fail();
@@ -107,7 +99,7 @@ public class FirstAllureTest {
     @TestCaseId("JIRA-3254")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "some description from test")
-    public void testName2() throws Exception {
+    public void testName2() {
 
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 
@@ -116,8 +108,6 @@ public class FirstAllureTest {
         platform = cap.getPlatform().toString();
 
         driver.get("http://google.com.ua");
-
-        String chromeDdriver = System.getProperty("webdriver.chrome.driver");
 
         String issue = System.getProperty("my.test.var");
         String tracker = System.getProperty("allure.issues.tracker.pattern");
@@ -128,7 +118,6 @@ public class FirstAllureTest {
         System.out.println("webdriver.chrome.driver       : ----> " + System.getProperty("webdriver.chrome.driver"));
         System.out.println("webdriver.ie.driver           : ----> " + System.getProperty("webdriver.ie.driver"));
 
-        String property1 = System.getProperty("project.version");
 
         File defaultResultsDirectory = AllureConfig.getDefaultResultsDirectory();
         AllureConfig allureConfig = new AllureConfig();
@@ -139,7 +128,7 @@ public class FirstAllureTest {
     @Severity(SeverityLevel.CRITICAL)
     @Stories({"Story1", "Story2"})
     @Test
-    public void testName3() throws Exception {
+    public void testName3() {
         driver.get("https://www.google.com/ncr");
         makeScreenShot();
     }
@@ -156,7 +145,7 @@ public class FirstAllureTest {
     @Stories("default.story")
     @Issue("JIRA-321")
     @Test
-    public void testName4() throws Exception {
+    public void testName4() {
         driver.get("http://google.co.uk");
 
         jsonAttach();
@@ -171,7 +160,7 @@ public class FirstAllureTest {
     @Issue("JIRA-254")
     @TestCaseId("JIRA-2547")
     @Test
-    public void testName5() throws Exception {
+    public void testName5() throws IOException {
         Allure.LIFECYCLE.fire(new AddParameterEvent("PATH", System.getenv("PATH")));
         Allure.LIFECYCLE.fire(new AddParameterEvent("BASEDIR", new File(".").getCanonicalPath()));
         Allure.LIFECYCLE.fire(new AddParameterEvent("OS_NAME", System.getProperty("os.name")));
@@ -184,12 +173,12 @@ public class FirstAllureTest {
     @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
     @Description("I hate descriptions! See the title!")
     @Test
-    public void testName6() throws Exception {
+    public void testName6() {
         assertThat(4, is(2 + 2));
     }
 
     @Test(description = "description from TestNG annotation")
-    public void testName7() throws Exception {
+    public void testName7() {
         assertThat(4, is(2 + 2));
     }
 
