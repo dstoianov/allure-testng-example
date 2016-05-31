@@ -1,9 +1,13 @@
 package enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Created by denys.stoianov on 16/02/16
- * Email: denys.stoianov@auto1.com
  */
+@AllArgsConstructor
+@Getter
 public enum OperatingSystem {
 
     WINDOWS("windows"),
@@ -12,20 +16,14 @@ public enum OperatingSystem {
 
     private String operatingSystemName;
 
-    OperatingSystem(String operatingSystemName) {
-        this.operatingSystemName = operatingSystemName;
-    }
 
-    String getOperatingSystemType() {
-        return operatingSystemName;
-    }
 
     public static OperatingSystem getOperatingSystem() {
 
         String name = System.getProperties().getProperty("os.name");
 
         for (OperatingSystem operatingSystemName : values()) {
-            if (name.toLowerCase().contains(operatingSystemName.getOperatingSystemType())) {
+            if (name.toLowerCase().contains(operatingSystemName.getOperatingSystemName())) {
                 return operatingSystemName;
             }
         }
