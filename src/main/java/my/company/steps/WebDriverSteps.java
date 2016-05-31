@@ -36,7 +36,7 @@ public class WebDriverSteps {
         driver.findElement(By.id("error"));
     }
 
-    @Attachment(type = "image/png")
+    @Attachment(value = "Screenshot on demand", type = "image/png")
     public byte[] makeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
