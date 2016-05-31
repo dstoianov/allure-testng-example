@@ -1,6 +1,7 @@
 package browser;
 
 import com.company.Behaviors;
+import custom.listener.OnFailure;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,8 +19,9 @@ public class ChromeBrowserTest extends BrowserBase {
     @BeforeMethod
     public void setUp() {
         log.info(">>> Start chrome driver >>>>");
-        ChromeDriver driver = new ChromeDriver();
-        steps = new WebDriverSteps(driver);
+        DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new ChromeDriver());
+        OnFailure.driver = getDriver();
+        steps = new WebDriverSteps(getDriver());
     }
 
     @Description("chrome test")
@@ -27,7 +29,8 @@ public class ChromeBrowserTest extends BrowserBase {
     public void searchByChromeTest() {
         steps.openMainPage();
         steps.search("Yandex QATools");
-        steps.makeScreenshot();
+        steps.makeError();
+//        steps.makeScreenshot();
     }
 
 

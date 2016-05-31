@@ -1,5 +1,8 @@
 package custom.listener;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import ru.yandex.qatools.allure.annotations.Attachment;
@@ -12,32 +15,31 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * @author Dmitry Baev charlie@yandex-team.ru
- *         Date: 08.09.14
- */
 public class OnFailure extends TestListenerAdapter {
 
-    @Step("Hi, I'm step in your TestNG listener")
+    public static WebDriver driver;
+
+    @Step("onFailure screenshot attach")
     @Override
     public void onTestFailure(ITestResult tr) {
-        createAttachment();
-        getSystemProperties();
-        createAttachment2();
+        if (driver != null) {
+            attachBrowserScreenshot();
+        } else {
+            System.err.println("driver is null, can't create 'Browser window screenshot'");
+        }
+        attachWindowScreenshot();
+        attachSystemProperties();
     }
 
-    @Attachment("Hi, I'm attachment in your testng listener")
-    public String createAttachment2() {
-        return "My own attachment body!";
-    }
-
-    @Attachment(value = "PNG full Attachment", type = "image/png")
-    public byte[] createAttachment() {
+    @Attachment(value = "Full window screenshot")
+    private byte[] attachWindowScreenshot() {
         return captureScreenShot();
     }
 
-//    test commit
-//    test commit
+    @Attachment(value = "Browser window screenshot", type = "image/png")
+    private byte[] attachBrowserScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 
     private byte[] captureScreenShot() {
         try {
@@ -47,7 +49,12 @@ public class OnFailure extends TestListenerAdapter {
             baos.flush();
             byte[] imageInByte = baos.toByteArray();
             baos.close();
-            return imageInByte;
+            // TODO: avoiding black screen, if image size more then 30k bytes
+            if (imageInByte.length / 1024 > 30) {
+                return imageInByte;
+            } else {
+                return "The size of screenshot is too small, it may be because black screen.".getBytes();
+            }
         } catch (IOException | AWTException e) {
             e.printStackTrace();
         }
@@ -55,7 +62,7 @@ public class OnFailure extends TestListenerAdapter {
     }
 
     @Attachment(value = "System Environment", type = "text/plain")
-    public byte[] getSystemProperties() {
+    private byte[] attachSystemProperties() {
         Properties props = System.getProperties();
         StringBuilder result = new StringBuilder();
         for (String prop : props.stringPropertyNames()) {

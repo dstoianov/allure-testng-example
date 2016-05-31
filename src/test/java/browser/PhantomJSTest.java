@@ -1,6 +1,7 @@
 package browser;
 
 import com.company.Behaviors;
+import custom.listener.OnFailure;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -19,7 +20,9 @@ public class PhantomJSTest extends BrowserBase {
     @BeforeMethod
     public void setUp() {
         log.info(">>> Start PhantomJS driver >>>>");
-        steps = new WebDriverSteps(new PhantomJSDriver());
+        DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new PhantomJSDriver());
+        OnFailure.driver = getDriver();
+        steps = new WebDriverSteps(getDriver());
     }
 
     @Description("phantomjs test")
@@ -27,7 +30,7 @@ public class PhantomJSTest extends BrowserBase {
     public void searchByPhantomJSTest() {
         steps.openMainPage();
         steps.search("Yandex QATools");
-        steps.makeScreenshot();
+        steps.makeError();
     }
 
 }

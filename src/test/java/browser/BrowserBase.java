@@ -3,14 +3,21 @@ package browser;
 import enums.OperatingSystem;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Funker on 30.05.2016.
  */
 @Slf4j
-public abstract class BrowserBase {
+public class BrowserBase {
+
+
+    protected static final Map<Long, WebDriver> DRIVER_MAP = new ConcurrentHashMap<>();
 
     protected WebDriverSteps steps;
 
@@ -18,7 +25,12 @@ public abstract class BrowserBase {
     public void tearDown() {
         if (steps != null) {
             steps.quit();
+            DRIVER_MAP.remove(Thread.currentThread().getId());
         }
+    }
+
+    protected static WebDriver getDriver() {
+        return DRIVER_MAP.get(Thread.currentThread().getId());
     }
 
 

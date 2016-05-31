@@ -30,6 +30,12 @@ public class WebDriverSteps {
         driver.findElement(By.cssSelector(".search2__button")).submit();
     }
 
+
+    @Step("Make test fail")
+    public void makeError() {
+        driver.findElement(By.id("error"));
+    }
+
     @Attachment(type = "image/png")
     public byte[] makeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);

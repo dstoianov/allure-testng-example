@@ -12,7 +12,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public enum SystemArchitecture {
+enum SystemArchitecture {
 
     ARCHITECTURE_64_BIT("64 bit"),
     ARCHITECTURE_32_BIT("32 bit");
