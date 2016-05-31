@@ -30,6 +30,7 @@ public class PhantomJSTest extends BrowserBase {
     public void searchByPhantomJSTest() {
         steps.openMainPage();
         steps.search("Yandex QATools");
+        steps.makeScreenshot();
         steps.makeError();
     }
 
