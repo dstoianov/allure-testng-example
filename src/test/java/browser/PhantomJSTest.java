@@ -5,6 +5,7 @@ import custom.listener.OnFailure;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Description;
@@ -20,7 +21,10 @@ public class PhantomJSTest extends BrowserBase {
     @BeforeMethod
     public void setUp() {
         log.info(">>> Start PhantomJS driver >>>>");
-        DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new PhantomJSDriver());
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setJavascriptEnabled(true);
+        caps.setCapability("takesScreenshot", true);
+        DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new PhantomJSDriver(caps));
         OnFailure.driver = getDriver();
         steps = new WebDriverSteps(getDriver());
     }
