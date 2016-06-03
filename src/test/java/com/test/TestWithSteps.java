@@ -22,7 +22,7 @@ public class TestWithSteps {
 
     @Title("Test with 3 steps and 1 nested step")
     @Test
-    public void sampleTest() throws Exception {
+    public void sampleTest() {
         step1();
         step2();
         step3();
