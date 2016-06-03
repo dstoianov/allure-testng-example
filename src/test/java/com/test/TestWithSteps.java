@@ -58,10 +58,10 @@ public class TestWithSteps {
     private void sleep(long millis) {
         try {
             Thread.sleep(millis);
+            System.out.println(String.format("sleep for '%s' ms", millis));
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            return;
         }
-        System.out.println(String.format("Sleep for '%xmlAttachmnet' ms", millis));
     }
 
 }
