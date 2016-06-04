@@ -2,7 +2,8 @@ package com.test;
 
 import com.company.Behaviors;
 import com.company.MyClass;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -17,10 +18,13 @@ import static org.hamcrest.core.Is.is;
  * Created by Funker on 17.11.2014, 0:43.
  */
 
-@Slf4j
+
 @Features("Steps Feature")
 @Stories(Behaviors.Story.SIMPLE_STORY)
 public class TestWithSteps {
+
+    private static final Logger log = LoggerFactory.getLogger(TestWithSteps.class);
+
 
     @Title("Test with 3 steps and 1 nested step")
     @Test
@@ -63,7 +67,6 @@ public class TestWithSteps {
             System.out.println(String.format("sleep for '%s' ms", millis));
         } catch (InterruptedException e) {
             log.error("Interrupted Exception {}", e);
-            throw new RuntimeException("Interrupted Exception occurred", e);
         }
     }
 
