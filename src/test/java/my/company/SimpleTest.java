@@ -1,14 +1,14 @@
 package my.company;
 
+import org.apache.commons.io.IOUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -100,7 +100,9 @@ public class SimpleTest {
         if (resource == null) {
             fail("Couldn't find resource 'sample.csv'");
         }
-        return Files.readAllBytes(Paths.get(resource.toURI()));
+        InputStream is = resource.openStream();
+        return IOUtils.toByteArray(is);
+//        return Files.readAllBytes(Paths.get(uri));
     }
 
     @Test

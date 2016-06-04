@@ -2,6 +2,7 @@ package com.test;
 
 import com.company.Behaviors;
 import com.company.MyClass;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -16,6 +17,7 @@ import static org.hamcrest.core.Is.is;
  * Created by Funker on 17.11.2014, 0:43.
  */
 
+@Slf4j
 @Features("Steps Feature")
 @Stories(Behaviors.Story.SIMPLE_STORY)
 public class TestWithSteps {
@@ -60,7 +62,7 @@ public class TestWithSteps {
             Thread.sleep(millis);
             System.out.println(String.format("sleep for '%s' ms", millis));
         } catch (InterruptedException e) {
-            return;
+            log.error("Interrupted Exception {}", e);
         }
     }
 
