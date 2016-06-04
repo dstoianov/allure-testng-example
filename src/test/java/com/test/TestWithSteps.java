@@ -63,6 +63,7 @@ public class TestWithSteps {
             System.out.println(String.format("sleep for '%s' ms", millis));
         } catch (InterruptedException e) {
             log.error("Interrupted Exception {}", e);
+            throw new RuntimeException("Interrupted Exception occurred", e);
         }
     }
 
