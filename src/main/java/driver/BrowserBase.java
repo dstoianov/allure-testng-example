@@ -1,10 +1,10 @@
-package browser;
+package driver;
 
 import enums.OperatingSystem;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.util.Map;
@@ -16,12 +16,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class BrowserBase {
 
-
     protected static final Map<Long, WebDriver> DRIVER_MAP = new ConcurrentHashMap<>();
 
     protected WebDriverSteps steps;
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         if (steps != null) {
             steps.quit();
@@ -32,7 +31,6 @@ public class BrowserBase {
     protected static WebDriver getDriver() {
         return DRIVER_MAP.get(Thread.currentThread().getId());
     }
-
 
     @BeforeClass
     public void setUpPath() {

@@ -1,7 +1,7 @@
 package browser;
 
 import com.company.Behaviors;
-import custom.listener.OnFailure;
+import driver.BrowserBase;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +26,6 @@ public class PhantomJSTest extends BrowserBase {
         log.info(">>> Start PhantomJS driver >>>>");
         DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), getPhantomJSDeriver());
         log.info("driver is OK");
-        OnFailure.driver = getDriver();
         steps = new WebDriverSteps(getDriver());
     }
 

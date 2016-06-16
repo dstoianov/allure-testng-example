@@ -6,7 +6,7 @@
     <test name="RunTests">
         <parameter name="browserType" value="firefox"/>
         <classes>
-            <class name="com.test.FirstAllureTest"/>
+            <class name="browser.FirstAllureTest"/>
         </classes>
     </test>
 </suite>

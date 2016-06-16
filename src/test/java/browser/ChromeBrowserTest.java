@@ -1,7 +1,7 @@
 package browser;
 
 import com.company.Behaviors;
-import custom.listener.OnFailure;
+import driver.BrowserBase;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,7 +20,6 @@ public class ChromeBrowserTest extends BrowserBase {
     public void setUp() {
         log.info(">>> Start chrome driver >>>>");
         DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new ChromeDriver());
-        OnFailure.driver = getDriver();
         steps = new WebDriverSteps(getDriver());
     }
 

@@ -1,12 +1,14 @@
-package com.test;
+package browser;
 
 
 import com.company.Behaviors;
+import custom.listener.OnFailure;
+import driver.BrowserBase;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -28,7 +30,7 @@ import static org.testng.AssertJUnit.fail;
  * Created by dstoianov on 2014-11-06, 6:20 PM
  */
 @Features(Behaviors.Feature.BROWSER)
-public class FirstAllureTest {
+public class FirstAllureTest extends BrowserBase {
 
     String xmlAttachmnet = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
     String jsonAttachmet = "{\n" +
@@ -63,20 +65,25 @@ public class FirstAllureTest {
     @Parameter("Platform")
     private String platform;
 
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeClass
     public void setUp() {
+        super.setUpPath();
         String p1 = System.getProperty("phantomjs.binary.path");
         String p2 = System.getProperty("webdriver.chrome.driver");
         String p3 = System.getProperty("webdriver.ie.driver");
         String os = System.getProperty("os.name");
 
-        driver = new FirefoxDriver();
+//        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+        OnFailure.driver = driver;
+
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
+        super.tearDown();
         if (driver != null) {
             driver.quit();
         }

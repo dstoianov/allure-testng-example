@@ -1,5 +1,6 @@
 package my.company.steps;
 
+import custom.listener.OnFailure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,6 +18,7 @@ public class WebDriverSteps {
 
     public WebDriverSteps(WebDriver driver) {
         this.driver = driver;
+        OnFailure.driver = driver;
     }
 
     @Step
@@ -44,6 +46,7 @@ public class WebDriverSteps {
     public void quit() {
         if (driver != null) {
             driver.quit();
+            OnFailure.driver = null;
         }
     }
 }

@@ -1,12 +1,11 @@
 package browser;
 
 import com.company.Behaviors;
-import custom.listener.OnFailure;
+import driver.BrowserBase;
 import lombok.extern.slf4j.Slf4j;
 import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -21,13 +20,12 @@ public class FireFoxBrowserTest extends BrowserBase {
     public void setUp() {
         log.info(">>> Start firefox driver >>>>");
         DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new FirefoxDriver());
-        OnFailure.driver = getDriver();
         steps = new WebDriverSteps(getDriver());
     }
 
 
     @Description("firefox test")
-    @Test
+//    @Test
     public void searchByFirefoxTest() {
         steps.openMainPage();
         steps.search("Yandex QATools");
