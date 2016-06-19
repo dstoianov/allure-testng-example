@@ -49,7 +49,7 @@ public class OnFailure extends TestListenerAdapter {
             baos.flush();
             byte[] imageInByte = baos.toByteArray();
             baos.close();
-            // TODO: avoiding black screen, if image size more then 30k bytes
+            // TODO: avoiding attach black screen, if image size more then 30k bytes
             if (imageInByte.length / 1024 > 30) {
                 return imageInByte;
             } else {
