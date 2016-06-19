@@ -189,12 +189,12 @@ public class FirstAllureTest extends BrowserBase {
         assertThat(4, is(2 + 2));
     }
 
-    @Attachment(value = "XML Attachment", type = "text/xml")
+    @Attachment(value = "XML Attachment", type = "application/xml")
     public byte[] xmlAttach() {
         return xmlAttachmnet.getBytes();
     }
 
-    @Attachment(value = "JSON Attachment", type = "application/jsonAttachmet")
+    @Attachment(value = "JSON Attachment", type = "application/json")
     public byte[] jsonAttach() {
         return jsonAttachmet.getBytes();
     }
