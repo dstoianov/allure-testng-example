@@ -66,6 +66,8 @@ public class OnFailure extends TestListenerAdapter {
         Properties props = System.getProperties();
         StringBuilder result = new StringBuilder();
         for (String prop : props.stringPropertyNames()) {
+            if (prop.startsWith("surefire.test.class.path")
+                    || prop.startsWith("java.class.path")) continue;
             result.append(prop)
                     .append(" = ")
                     .append(System.getProperty(prop))
