@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.TreeSet;
 
 public class OnFailure extends TestListenerAdapter {
 
@@ -65,7 +66,7 @@ public class OnFailure extends TestListenerAdapter {
     private byte[] attachSystemProperties() {
         Properties props = System.getProperties();
         StringBuilder result = new StringBuilder();
-        for (String prop : props.stringPropertyNames()) {
+        for (String prop : new TreeSet<>(props.stringPropertyNames())) {
             if (prop.startsWith("surefire.test.class.path")
                     || prop.startsWith("java.class.path")) continue;
             result.append(prop)
