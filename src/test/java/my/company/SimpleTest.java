@@ -8,7 +8,6 @@ import ru.yandex.qatools.allure.annotations.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -90,19 +89,24 @@ public class SimpleTest {
     }
 
     @Test
-    public void csvAttachmentTest() throws Exception {
+    public void csvAttachmentTest() throws IOException {
         saveCsvAttachment();
     }
 
     @Attachment(value = "Sample csv attachment", type = "text/csv")
-    public byte[] saveCsvAttachment() throws URISyntaxException, IOException {
-        URL resource = getClass().getClassLoader().getResource("sample.csv");
-        if (resource == null) {
-            fail("Couldn't find resource 'sample.csv'");
+    public byte[] saveCsvAttachment() throws IOException {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("sample.csv")) {
+            return IOUtils.toByteArray(is);
+        } catch (NullPointerException e) {
+            throw new RuntimeException("Couldn't find resource 'sample.csv'");
         }
-        InputStream is = resource.openStream();
-        return IOUtils.toByteArray(is);
-//        return Files.readAllBytes(Paths.get(uri));
+//        throw new RuntimeException("Couldn't find resource 'sample.csv'");
+//        URL resource = getClass().getClassLoader().getResource("sample.csv");
+//        if (resource == null) {
+//            fail("Couldn't find resource 'sample.csv'");
+//        }
+//        InputStream is = resource.openStream();
+//        return IOUtils.toByteArray(is);
     }
 
     @Test
