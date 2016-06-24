@@ -7,7 +7,6 @@ import ru.yandex.qatools.allure.annotations.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +30,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void simpleTestWithSteps() throws Exception {
+    public void simpleTestWithSteps() {
         checkThat2is2();
     }
 
@@ -41,7 +40,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void simpleTestWithAttachments() throws Exception {
+    public void simpleTestWithAttachments() {
         assertThat(2, is(2));
         makeAttach();
     }
@@ -56,7 +55,7 @@ public class SimpleTest {
     }
 
     @Test(enabled = false, description = "This is pending test, enabled = false")
-    public void skippedTest() throws Exception {
+    public void skippedTest() {
     }
 
     @DataProvider
@@ -110,12 +109,12 @@ public class SimpleTest {
     }
 
     @Test
-    public void htmlAttachmentTest() throws Exception {
+    public void htmlAttachmentTest() {
         saveHTMLAttachment();
     }
 
     @Attachment(value = "Sample HTML attachment", type = "text/html")
-    public byte[] saveHTMLAttachment() throws URISyntaxException, IOException {
+    public byte[] saveHTMLAttachment() {
         String s = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<body>\n" +
