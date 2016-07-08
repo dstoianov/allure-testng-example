@@ -19,7 +19,7 @@
         <compiler.source>${java.version}</compiler.source>
         <compiler.target>${java.version}</compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium-java.version>2.53.0</selenium-java.version>
+        <selenium-java.version>2.53.1</selenium-java.version>
         <allure.version>1.4.23</allure.version>
         <aspectj.version>1.8.7</aspectj.version>
         <driver.path>${basedir}/src/test/resources/drivers</driver.path>
