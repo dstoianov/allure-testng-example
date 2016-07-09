@@ -15,7 +15,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.Allure;
 import ru.yandex.qatools.allure.annotations.*;
-import ru.yandex.qatools.allure.config.AllureConfig;
 import ru.yandex.qatools.allure.events.AddParameterEvent;
 import ru.yandex.qatools.allure.model.SeverityLevel;
 
@@ -126,9 +125,6 @@ public class FirstAllureTest extends BrowserBase {
         System.out.println("webdriver.ie.driver           : ----> " + System.getProperty("webdriver.ie.driver"));
 
 
-        File defaultResultsDirectory = AllureConfig.getDefaultResultsDirectory();
-        AllureConfig allureConfig = new AllureConfig();
-        String s = allureConfig.getTestSuiteFileSuffix();
     }
 
     @Title("This is the Big Title for test")

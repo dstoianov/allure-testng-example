@@ -1,5 +1,6 @@
 package custom.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.TreeSet;
 
+@Slf4j
 public class OnFailure extends TestListenerAdapter {
 
     public static WebDriver driver;
@@ -23,37 +25,44 @@ public class OnFailure extends TestListenerAdapter {
     @Step("onFailure screenshot attach")
     @Override
     public void onTestFailure(ITestResult tr) {
+        attachWindowScreenshot();
         if (driver != null) {
             attachBrowserScreenshot();
         } else {
-            System.err.println("driver is null, can't create 'Browser window screenshot'");
+            log.error("driver is null, can't create 'Browser window screenshot'");
         }
-        attachWindowScreenshot();
         attachSystemProperties();
     }
 
     @Attachment(value = "Full window screenshot")
     private byte[] attachWindowScreenshot() {
+        log.info("Create screenshot by Java Robot");
         return captureScreenShot();
     }
 
     @Attachment(value = "Browser window screenshot", type = "image/png")
     private byte[] attachBrowserScreenshot() {
+        log.info("Create screenshot by webdriver");
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     private byte[] captureScreenShot() {
         try {
-            BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            log.info("Detecting screen size '{}'", screenSize);
+            BufferedImage image = new Robot().createScreenCapture(new Rectangle(screenSize));
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.setUseCache(false);
             ImageIO.write(image, "png", baos);
             baos.flush();
             byte[] imageInByte = baos.toByteArray();
+            log.info("image size is '{}'", imageInByte.length);
             baos.close();
             // TODO: avoiding attach black screen, if image size more then 30k bytes
             if (imageInByte.length / 1024 > 30) {
                 return imageInByte;
             } else {
+                log.info("Something goes wrong, image does not converted");
                 return "The size of screenshot is too small, it may be because black screen.".getBytes();
             }
         } catch (IOException | AWTException e) {
