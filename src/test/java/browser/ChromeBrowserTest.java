@@ -30,7 +30,7 @@ public class ChromeBrowserTest extends BrowserBase {
     public void searchByChromeTest() {
         steps.openMainPage();
         steps.search("Yandex QATools");
-        fail();
+        fail("make test failed");
         steps.makeError();
 //        steps.makeScreenshot();
     }

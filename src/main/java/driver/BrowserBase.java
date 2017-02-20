@@ -44,20 +44,23 @@ public class BrowserBase {
 
         if (osName.equalsIgnoreCase(OperatingSystem.WINDOWS.name())) {
             System.setProperty("webdriver.chrome.driver", path + "win/chromedriver.exe");
+            System.setProperty("webdriver.gecko.driver", path + "win/geckodriver.exe");
             System.setProperty("webdriver.ie.driver", path + "win/IEDriverServer.exe");
             System.setProperty("phantomjs.binary.path", path + "win/phantomjs.exe");
 //          Download the marionette driver here
 //          https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver
-            System.setProperty("webdriver.gecko.driver", path + "win/wires.exe");
+//            System.setProperty("webdriver.gecko.driver", path + "win/wires.exe");
         } else if (osName.equalsIgnoreCase(OperatingSystem.MAC.name())) {
             System.setProperty("webdriver.chrome.driver", path + "mac/chromedriver");
         } else {
             System.setProperty("webdriver.chrome.driver", path + "linux/chromedriver");
+            System.setProperty("webdriver.gecko.driver", path + "linux/geckodriver");
             System.setProperty("phantomjs.binary.path", path + "linux/phantomjs");
         }
 
         log.info("Detected OS is '{}'", osName);
         log.info("Chrome driver path is    '{}'", System.getProperty("webdriver.chrome.driver"));
+        log.info("Gecko driver path is     '{}'", System.getProperty("webdriver.gecko.driver"));
         log.info("PhantomJS driver path is '{}'", System.getProperty("phantomjs.binary.path"));
         log.info("IE driver path is        '{}'", System.getProperty("webdriver.ie.driver"));
     }
