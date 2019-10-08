@@ -11,12 +11,12 @@ import org.testng.annotations.Test;
 public class BeforeClassFailTest {
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         throw new RuntimeException("bye-bye");
     }
 
     @Test
-    public void testTest() throws Exception {
+    public void testTest() {
 
     }
 }

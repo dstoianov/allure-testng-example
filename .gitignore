@@ -9,5 +9,5 @@ target
 *.classpath
 *.project
 *.pydevproject
-
+.allure
 /allure-results/

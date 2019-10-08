@@ -1,4 +1,4 @@
-package bean;
+package se.techinsight.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

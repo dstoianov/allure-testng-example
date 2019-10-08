@@ -1,4 +1,4 @@
-package com.company;
+package se.techinsight;
 
 /**
  * @author Boris Serdyuk just-boris@yandex-team.ru

@@ -1,8 +1,8 @@
-package change.test.name;
+package se.techinsight.test.unit.name;
 
-import bean.TestParameters;
 import org.testng.ITest;
 import org.testng.annotations.BeforeMethod;
+import se.techinsight.bean.TestParameters;
 
 import java.lang.reflect.Method;
 

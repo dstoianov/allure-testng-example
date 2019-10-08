@@ -1,4 +1,4 @@
-package com.test;
+package se.techinsight.test.unit;
 
 import org.testng.annotations.AfterGroups;
 import org.testng.annotations.BeforeGroups;
@@ -19,7 +19,7 @@ public class GroupTest {
         System.out.println("cleanDB()");
     }
 
-    @Test(groups = "selenium-test")
+    @Test(groups = {"selenium-test"})
     public void runSelenium() {
         System.out.println("runSelenium()");
     }

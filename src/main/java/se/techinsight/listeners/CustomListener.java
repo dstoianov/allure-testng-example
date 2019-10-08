@@ -14,8 +14,6 @@ import java.util.Arrays;
 @Slf4j
 public class CustomListener extends TestListenerAdapter {
 
-//    private static final Logger log = LoggerFactory.getLogger(CustomListener.class);
-
     @Override
     public void onStart(ITestContext context) {
         log.info("Test suite: {}", context.getName());

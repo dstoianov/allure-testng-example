@@ -39,10 +39,4 @@ public class WebDriverSteps {
     public byte[] makeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
-
-    public void quit() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }

@@ -1,4 +1,4 @@
-package enums;
+package se.techinsight.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

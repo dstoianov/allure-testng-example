@@ -1,7 +1,5 @@
-package com.test;
+package se.techinsight.test.unit;
 
-import com.company.Behaviors;
-import com.company.MyClass;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
@@ -9,6 +7,8 @@ import io.qameta.allure.Story;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
+import se.techinsight.Behaviors;
+import se.techinsight.MyClass;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
@@ -64,7 +64,7 @@ public class TestWithSteps {
             Thread.sleep(millis);
             System.out.println(String.format("sleep for '%s' ms", millis));
         } catch (InterruptedException e) {
-            log.error("Interrupted Exception {}", e);
+            log.error("Interrupted Exception", e);
         }
     }
 

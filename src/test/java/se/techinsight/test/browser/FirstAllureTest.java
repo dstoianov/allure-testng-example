@@ -1,6 +1,5 @@
-package browser;
+package se.techinsight.test.browser;
 
-import com.company.Behaviors;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -14,72 +13,76 @@ import io.qameta.allure.TmsLink;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import se.techinsight.listeners.OnFailure;
-
-import java.io.IOException;
+import se.techinsight.Behaviors;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by dstoianov on 2014-11-06, 6:20 PM
  */
 @Feature(Behaviors.Feature.BROWSER)
-public class FirstAllureTest extends BrowserBaseTest {
+public class FirstAllureTest extends BaseTest {
 
-    String xmlAttachmnet = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
-    String jsonAttachmet = "{\n" +
-            "    \"glossary\": {\n" +
-            "        \"title\": \"example glossary\",\n" +
-            "\t\t\"GlossDiv\": {\n" +
-            "            \"title\": \"S\",\n" +
-            "\t\t\t\"GlossList\": {\n" +
-            "                \"GlossEntry\": {\n" +
-            "                    \"ID\": \"SGML\",\n" +
-            "\t\t\t\t\t\"SortAs\": \"SGML\",\n" +
-            "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n" +
-            "\t\t\t\t\t\"Acronym\": \"SGML\",\n" +
-            "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n" +
-            "\t\t\t\t\t\"GlossDef\": {\n" +
-            "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n" +
-            "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n" +
-            "                    },\n" +
-            "\t\t\t\t\t\"GlossSee\": \"markup\"\n" +
-            "                }\n" +
-            "            }\n" +
-            "        }\n" +
-            "    }\n" +
-            "}";
-
-    public WebDriver driver;
+    String xmlAttachmnet =
+        "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
+    String jsonAttachmet = "{\n"
+        +
+        "    \"glossary\": {\n"
+        +
+        "        \"title\": \"example glossary\",\n"
+        +
+        "\t\t\"GlossDiv\": {\n"
+        +
+        "            \"title\": \"S\",\n"
+        +
+        "\t\t\t\"GlossList\": {\n"
+        +
+        "                \"GlossEntry\": {\n"
+        +
+        "                    \"ID\": \"SGML\",\n"
+        +
+        "\t\t\t\t\t\"SortAs\": \"SGML\",\n"
+        +
+        "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n"
+        +
+        "\t\t\t\t\t\"Acronym\": \"SGML\",\n"
+        +
+        "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n"
+        +
+        "\t\t\t\t\t\"GlossDef\": {\n"
+        +
+        "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n"
+        +
+        "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n"
+        +
+        "                    },\n"
+        +
+        "\t\t\t\t\t\"GlossSee\": \"markup\"\n"
+        +
+        "                }\n"
+        +
+        "            }\n"
+        +
+        "        }\n"
+        +
+        "    }\n"
+        +
+        "}";
 
     @BeforeClass
     public void setUp() {
         super.setUpPath();
-        String p1 = System.getProperty("phantomjs.binary.path");
-        String p2 = System.getProperty("webdriver.chrome.driver");
-        String p3 = System.getProperty("webdriver.ie.driver");
-        String os = System.getProperty("os.name");
-
-//        driver = new FirefoxDriver();
-        driver = new ChromeDriver();
-        OnFailure.driver = driver;
-
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         super.tearDown();
-        if (driver != null) {
-            driver.quit();
-        }
     }
 
     @Issue("JIRA-254")
@@ -87,23 +90,23 @@ public class FirstAllureTest extends BrowserBaseTest {
     @Severity(SeverityLevel.MINOR)
     @Test
     public void testName1() {
-        driver.get("http://google.com.ua");
+        getDriver().get("http://google.com.ua");
         makeScreenShot();
         fail();
     }
 
     @Issues({
-            @Issue("JIRA-1"),
-            @Issue("JIRA-2")
+        @Issue("JIRA-1"),
+        @Issue("JIRA-2")
     })
     @TmsLink("JIRA-3254")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "some description from test")
     public void testName2() {
 
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        Capabilities cap = ((RemoteWebDriver) getDriver()).getCapabilities();
         String browser = cap.getBrowserName();
-        driver.get("http://google.com.ua");
+        getDriver().get("http://google.com.ua");
     }
 
     @Description("This is the Big Title for test")
@@ -111,7 +114,7 @@ public class FirstAllureTest extends BrowserBaseTest {
     @Stories({@Story("dddd"), @Story("ddddd")})
     @Test
     public void testName3() {
-        driver.get("https://www.google.com/ncr");
+        getDriver().get("https://www.google.com/ncr");
         makeScreenShot();
     }
 
@@ -127,13 +130,12 @@ public class FirstAllureTest extends BrowserBaseTest {
     @Issue("JIRA-321")
     @Test
     public void testName4() {
-        driver.get("http://google.co.uk");
+        getDriver().get("http://google.co.uk");
 
         jsonAttach();
         xmlAttach();
         makeScreenShot();
         fail("some message for fail");
-
     }
 
     @Severity(SeverityLevel.NORMAL)
@@ -141,7 +143,7 @@ public class FirstAllureTest extends BrowserBaseTest {
     @Issue("JIRA-254")
     @TmsLink("JIRA-2547")
     @Test
-    public void testName5() throws IOException {
+    public void testName5() {
     }
 
     @Description("I hate descriptions! See the title!")
@@ -167,7 +169,6 @@ public class FirstAllureTest extends BrowserBaseTest {
 
     @Attachment(value = "PNG wd Attachment", type = "image/png")
     public byte[] makeScreenShot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
     }
-
 }
