@@ -1,26 +1,26 @@
 package browser;
 
 import com.company.Behaviors;
-import driver.BrowserBase;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
-import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Description;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import se.techinsight.steps.WebDriverSteps;
 
 import static org.testng.Assert.fail;
 
 @Slf4j
-@Features(Behaviors.Feature.BROWSER)
-@Stories(Behaviors.Story.BROWSER)
-public class ChromeBrowserTest extends BrowserBase {
+@Feature(Behaviors.Feature.BROWSER)
+@Story(Behaviors.Story.BROWSER)
+public class ChromeBrowserTest extends BrowserBaseTest {
 
     @BeforeMethod
     public void setUp() {
-        log.info(">>> Start chrome driver >>>>");
+        WebDriverManager.chromedriver().setup();
         DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new ChromeDriver());
         steps = new WebDriverSteps(getDriver());
     }

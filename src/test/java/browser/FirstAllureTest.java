@@ -1,9 +1,16 @@
 package browser;
 
-
 import com.company.Behaviors;
-import custom.listener.OnFailure;
-import driver.BrowserBase;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Issues;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,12 +20,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.Allure;
-import ru.yandex.qatools.allure.annotations.*;
-import ru.yandex.qatools.allure.events.AddParameterEvent;
-import ru.yandex.qatools.allure.model.SeverityLevel;
+import se.techinsight.listeners.OnFailure;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -28,8 +31,8 @@ import static org.testng.AssertJUnit.fail;
 /**
  * Created by dstoianov on 2014-11-06, 6:20 PM
  */
-@Features(Behaviors.Feature.BROWSER)
-public class FirstAllureTest extends BrowserBase {
+@Feature(Behaviors.Feature.BROWSER)
+public class FirstAllureTest extends BrowserBaseTest {
 
     String xmlAttachmnet = "<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
     String jsonAttachmet = "{\n" +
@@ -54,15 +57,6 @@ public class FirstAllureTest extends BrowserBase {
             "        }\n" +
             "    }\n" +
             "}";
-
-    @Parameter("Browser Name")
-    private String browser;
-
-    @Parameter("Browser Version")
-    private String version;
-
-    @Parameter("Platform")
-    private String platform;
 
     public WebDriver driver;
 
@@ -102,50 +96,34 @@ public class FirstAllureTest extends BrowserBase {
             @Issue("JIRA-1"),
             @Issue("JIRA-2")
     })
-    @TestCaseId("JIRA-3254")
+    @TmsLink("JIRA-3254")
     @Severity(SeverityLevel.BLOCKER)
     @Test(description = "some description from test")
     public void testName2() {
 
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-
-        browser = cap.getBrowserName();
-        version = cap.getVersion();
-        platform = cap.getPlatform().toString();
-
+        String browser = cap.getBrowserName();
         driver.get("http://google.com.ua");
-
-        String issue = System.getProperty("my.test.var");
-        String tracker = System.getProperty("allure.issues.tracker.pattern");
-
-        System.out.println("my.test.var                   : ----> " + issue);
-        System.out.println("allure.issues.tracker.pattern : ----> " + tracker);
-        System.out.println("phantomjs.binary.path         : ----> " + System.getProperty("phantomjs.binary.path"));
-        System.out.println("webdriver.chrome.driver       : ----> " + System.getProperty("webdriver.chrome.driver"));
-        System.out.println("webdriver.ie.driver           : ----> " + System.getProperty("webdriver.ie.driver"));
-
-
     }
 
-    @Title("This is the Big Title for test")
+    @Description("This is the Big Title for test")
     @Severity(SeverityLevel.CRITICAL)
-    @Stories({"Story1", "Story2"})
+    @Stories({@Story("dddd"), @Story("ddddd")})
     @Test
     public void testName3() {
         driver.get("https://www.google.com/ncr");
         makeScreenShot();
     }
 
-    @Title("Test that should fail")
+    @Description("Test that should fail")
     @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void failedTest() {
         fail();
     }
 
-    @Title("default.title")
     @Description("default.description")
-    @Stories("default.story")
+    @Story("default.story")
     @Issue("JIRA-321")
     @Test
     public void testName4() {
@@ -159,21 +137,13 @@ public class FirstAllureTest extends BrowserBase {
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Title("Test with long assertion text")
+    @Description("Test with long assertion text")
     @Issue("JIRA-254")
-    @TestCaseId("JIRA-2547")
+    @TmsLink("JIRA-2547")
     @Test
     public void testName5() throws IOException {
-        Allure.LIFECYCLE.fire(new AddParameterEvent("PATH", System.getenv("PATH")));
-        Allure.LIFECYCLE.fire(new AddParameterEvent("BASEDIR", new File(".").getCanonicalPath()));
-        Allure.LIFECYCLE.fire(new AddParameterEvent("OS_NAME", System.getProperty("os.name")));
-        Allure.LIFECYCLE.fire(new AddParameterEvent("OS_VERSION", System.getProperty("os.version")));
-        Allure.LIFECYCLE.fire(new AddParameterEvent("JAVA_VERSION", System.getProperty("java.version")));
-
-        makeScreenShot();
     }
 
-    @Title("Test what do nothing and always passed right, but have a very long title, over 100 symbols, seriously")
     @Description("I hate descriptions! See the title!")
     @Test
     public void testName6() {

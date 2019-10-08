@@ -1,4 +1,4 @@
-custom.listener.OnFailure
-custom.listener.CustomReport
-custom.listener.CustomListener
+se.techinsight.listeners.OnFailure
+se.techinsight.listeners.CustomReport
+se.techinsight.listeners.CustomListener
 

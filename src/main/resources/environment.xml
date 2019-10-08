@@ -3,12 +3,12 @@
     <name>Allure sample test pack</name>
     <parameter>
         <name>Browser</name>
-        <key>my.properties.browser</key>
+        <key>se.techinsight.steps.company.my.properties.browser</key>
         <value>Firefox</value>
     </parameter>
     <parameter>
         <name>Test stand</name>
-        <key>my.properties.url</key>
+        <key>se.techinsight.steps.company.my.properties.url</key>
         <value>http://google.com</value>
     </parameter>
 </qa:environment>

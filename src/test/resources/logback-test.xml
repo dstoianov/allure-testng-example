@@ -1,0 +1,26 @@
+<configuration debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %highlight(%-5level) %green([%thread]) %cyan(%logger{36}:%line) - %msg%n</pattern>
+            <!--            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36}:%line - %msg%n</pattern>-->
+        </encoder>
+    </appender>
+    <appender name="PLAIN" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.savingglobal" level="INFO"/>
+    <logger name="com.savingglobal.opsys.core.ConfigurationFactory" level="WARN"/>
+    <logger name="com.savingglobal.opsys.util.SshConnector" level="INFO"/>
+    <logger name="com.savingglobal.opsys.util.mail.mock.MockMailStore" level="OFF"/>
+    <logger name="com.savingglobal.opsys.util.testing.TestNgListener" level="INFO" additivity="false">
+        <appender-ref ref="PLAIN"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

@@ -1,17 +1,18 @@
 package com.test;
 
 import com.company.Behaviors;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Description;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+
 
 /**
  * Created by Funker on 11.03.2015.
  */
 
-@Features(Behaviors.Priority.title)
-@Stories(Behaviors.Priority.STORY)
+@Feature(Behaviors.Priority.title)
+@Story(Behaviors.Priority.STORY)
 public class PriorityTest {
 
     @Description("test with priority 3")

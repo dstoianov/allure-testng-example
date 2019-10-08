@@ -9,108 +9,53 @@
     <version>1.0-SNAPSHOT</version>
 
     <!--<parent>-->
-        <!--<groupId>org.sonatype.oss</groupId>-->
-        <!--<artifactId>oss-parent</artifactId>-->
-        <!--<version>7</version>-->
+    <!--<groupId>org.sonatype.oss</groupId>-->
+    <!--<artifactId>oss-parent</artifactId>-->
+    <!--<version>7</version>-->
     <!--</parent>-->
 
     <properties>
         <java.version>1.8</java.version>
-        <compiler.source>${java.version}</compiler.source>
-        <compiler.target>${java.version}</compiler.target>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--<selenium-java.version>2.53.1</selenium-java.version>-->
-        <selenium-java.version>3.0.1</selenium-java.version>
         <allure.version>1.5.2</allure.version>
         <aspectj.version>1.8.7</aspectj.version>
-        <driver.path>${basedir}/src/test/resources/drivers</driver.path>
     </properties>
 
     <name>Allure TestNG Example</name>
 
-    <!--    <licenses>
-            <license>
-                <name>The Apache Software License, Version 2.0</name>
-                <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-                <distribution>repo</distribution>
-            </license>
-        </licenses>-->
-
-    <!--<scm>-->
-    <!--<url>https://github.com/allure-framework/allure-testng-examples</url>-->
-    <!--<connection>scm:git@github.com:allure-framework/allure-testng-example.git</connection>-->
-    <!--<developerConnection>scm:git:git@github.com:allure-framework/allure-testng-example.git</developerConnection>-->
-    <!--</scm>-->
-
-    <!--    <issueManagement>
-            <system>GitHub Issues</system>
-            <url>https://github.com/allure-framework/allure-testng-example/issues</url>
-        </issueManagement>-->
-
-    <!--    <developers>
-            <developer>
-                <id>charlie</id>
-                <name>Dmitry Baev</name>
-                <email>charlie@yandex-team.ru</email>
-                <organization>Yandex</organization>
-            </developer>
-        </developers>-->
 
     <dependencies>
-        <!--Allure TestNG-->
         <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-testng-adaptor</artifactId>
-            <version>${allure.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>junit</artifactId>
-                    <groupId>junit</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>${selenium-java.version}</version>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.7.1</version>
+            <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.10</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ru.yandex.qatools.processors</groupId>
-            <artifactId>feature-matcher-generator</artifactId>
-            <version>2.0.0</version>
-            <!-- 'provided' scope because this is only needed during compilation -->
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>ru.qatools.commons</groupId>
-            <artifactId>properties</artifactId>
-            <version>2.0.RC5</version>
-        </dependency>
-
-        <!--Web Driver-->
-        <!-- http://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.3.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>7.0.0</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -120,17 +65,7 @@
             <artifactId>hamcrest-all</artifactId>
             <version>1.3</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
 
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -148,35 +83,16 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.14</version>
+            <version>1.18.10</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-maven-plugin</artifactId>
-            <version>2.5</version>
+            <version>2.6</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.uncommons</groupId>
-            <artifactId>reportng</artifactId>
-            <version>1.1.4</version>
-            <!--<scope>test</scope>-->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>4.1.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -186,13 +102,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <source>${compiler.source}</source>
-                    <target>${compiler.target}</target>
-                    <!--<annotationProcessors>-->
-                    <!--<annotationProcessor>-->
-                    <!--ru.yandex.qatools.processors.matcher.gen.MatcherFactoryGenerator-->
-                    <!--</annotationProcessor>-->
-                    <!--</annotationProcessors>-->
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -202,27 +113,11 @@
                 <version>2.19.1</version>
                 <configuration>
                     <!--<testFailureIgnore>true</testFailureIgnore>-->
-                    <systemPropertyVariables>
-                        <org.uncommons.reportng.title>Automation Project Example</org.uncommons.reportng.title>
-                        <org.uncommons.reportng.escape-output>turn off</org.uncommons.reportng.escape-output>
-                        <allure.issues.tracker.pattern>http://jira.com/issues/%s</allure.issues.tracker.pattern>
-                        <my.test.var>ho-oh</my.test.var>
-                        <!--<phantomjs.binary.path>${driver.path}/phantomjs.exe</phantomjs.binary.path>-->
-                        <webdriver.chrome.driver>${driver.path}/chromedriver.exe</webdriver.chrome.driver>
-                        <webdriver.ie.driver>${driver.path}/IEDriverServer.exe</webdriver.ie.driver>
-                    </systemPropertyVariables>
+
                     <argLine>
                         <!--  -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
-                        </property>
-                    </properties>
-                    <!--<printSummary>true</printSummary>-->
-                    <reportNameSuffix>YANDEX</reportNameSuffix>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -239,29 +134,6 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.1</version>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <phase>pre-site</phase>
-                        <configuration>
-                            <target>
-                                <copy file="${project.basedir}/src/main/resources/environment.properties"
-                                      overwrite="true" todir="${project.basedir}/target/"/>
-                                <copy file="${project.basedir}/src/main/resources/environment.properties"
-                                      overwrite="true" todir="${project.build.directory}/allure-results"/>
-                                <copy file="${project.basedir}/src/main/resources/environment.xml" overwrite="true"
-                                      todir="${project.build.directory}/allure-results"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -271,7 +143,7 @@
             <plugin>
                 <groupId>ru.yandex.qatools.allure</groupId>
                 <artifactId>allure-maven-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.6</version>
             </plugin>
         </plugins>
     </reporting>

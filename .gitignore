@@ -9,5 +9,5 @@ target
 *.classpath
 *.project
 *.pydevproject
-/mail-1.4.7.jar
-mail-1.4.7.jar
+
+/allure-results/

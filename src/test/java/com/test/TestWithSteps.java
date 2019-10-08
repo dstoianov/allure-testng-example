@@ -2,13 +2,13 @@ package com.test;
 
 import com.company.Behaviors;
 import com.company.MyClass;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Step;
-import ru.yandex.qatools.allure.annotations.Stories;
-import ru.yandex.qatools.allure.annotations.Title;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
@@ -18,15 +18,13 @@ import static org.hamcrest.core.Is.is;
  * Created by Funker on 17.11.2014, 0:43.
  */
 
-
-@Features("Steps Feature")
-@Stories(Behaviors.Story.SIMPLE_STORY)
+@Feature("Steps Feature")
+@Story(Behaviors.Story.SIMPLE_STORY)
 public class TestWithSteps {
 
     private static final Logger log = LoggerFactory.getLogger(TestWithSteps.class);
 
-
-    @Title("Test with 3 steps and 1 nested step")
+    @Description("Test with 3 steps and 1 nested step")
     @Test
     public void sampleTest() {
         step1();

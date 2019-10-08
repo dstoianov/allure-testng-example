@@ -1,25 +1,26 @@
 package browser;
 
 import com.company.Behaviors;
-import driver.BrowserBase;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
-import my.company.steps.WebDriverSteps;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Description;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
+import se.techinsight.steps.WebDriverSteps;
+
 
 @Slf4j
-@Features(Behaviors.Feature.BROWSER)
-@Stories(Behaviors.Story.BROWSER)
-public class FireFoxBrowserTest extends BrowserBase {
+@Feature(Behaviors.Feature.BROWSER)
+@Story(Behaviors.Story.BROWSER)
+public class FireFoxBrowserTest extends BrowserBaseTest {
 
 
     @BeforeMethod
     public void setUp() {
-        log.info(">>> Start firefox driver >>>>");
+        WebDriverManager.firefoxdriver().setup();
         DRIVER_MAP.putIfAbsent(Thread.currentThread().getId(), new FirefoxDriver());
         steps = new WebDriverSteps(getDriver());
     }
@@ -31,7 +32,7 @@ public class FireFoxBrowserTest extends BrowserBase {
         steps.openMainPage();
         steps.search("Yandex QATools");
         steps.makeError();
-//        steps.makeScreenshot();
+        steps.makeScreenshot();
     }
 
 }
