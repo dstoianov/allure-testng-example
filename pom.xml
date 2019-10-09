@@ -80,8 +80,9 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.10.0</version>
                 <configuration>
-                    <reportVersion>2.13.0</reportVersion>
-                    <!--                    <reportDirectory>target/allure-report</reportDirectory>-->
+                    <!--                    this version shows a flaky tests - icon bomb -->
+                    <reportVersion>2.9.0</reportVersion>
+                    <!--  <reportDirectory>target/allure-report</reportDirectory>-->
                 </configuration>
             </plugin>
             <plugin>

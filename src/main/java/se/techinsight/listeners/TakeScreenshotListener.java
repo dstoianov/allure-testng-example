@@ -14,11 +14,13 @@ import java.util.Properties;
 import java.util.TreeSet;
 
 @Slf4j
-public class OnFailure extends TestListenerAdapter {
+public class TakeScreenshotListener extends TestListenerAdapter {
 
     @Step("onFailure screenshot attach")
     @Override
     public void onTestFailure(ITestResult tr) {
+//        WebDriver webDriver = ((BaseTest) tr.getInstance()).getWebDriver();
+
         if (BrowserHolder.getDriver() != null) {
             attachBrowserScreenshot(BrowserHolder.getDriver());
         } else {

@@ -1,4 +1,4 @@
-package se.techinsight.retry;
+package se.techinsight.listeners;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;

@@ -1,5 +1,3 @@
-se.techinsight.listeners.OnFailure
-se.techinsight.retry.RetryListener
-#se.techinsight.listeners.CustomReport
-#se.techinsight.listeners.CustomListener
-
+se.techinsight.listeners.RetryListener
+se.techinsight.listeners.MyTestListenerAdapter
+se.techinsight.listeners.TakeScreenshotListener

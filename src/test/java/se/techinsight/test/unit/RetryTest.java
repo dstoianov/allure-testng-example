@@ -1,5 +1,6 @@
 package se.techinsight.test.unit;
 
+import io.qameta.allure.Flaky;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -11,10 +12,11 @@ import static org.hamcrest.Matchers.is;
 @Slf4j
 public class RetryTest {
 
+    @Flaky
     @Test
     public void testRetryListenerSetToSkipp() {
-        int i = new Random().nextInt(5);
+        int i = new Random().nextInt(3);
         log.info("New Run, test said: Random int is: '{}'", i);
-        assertThat(i, is(3));
+        assertThat(i, is(1));
     }
 }
