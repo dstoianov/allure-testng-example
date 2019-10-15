@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * Sets retired test to pass if test was successful on retrial
  */
-public class MyTestListenerAdapter extends TestListenerAdapter {
+public class ReportModifierListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult result) {

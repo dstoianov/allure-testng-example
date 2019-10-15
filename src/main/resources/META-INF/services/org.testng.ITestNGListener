@@ -1,3 +1,3 @@
 se.techinsight.listeners.RetryListener
-se.techinsight.listeners.MyTestListenerAdapter
-se.techinsight.listeners.TakeScreenshotListener
+se.techinsight.listeners.ScreenshotListener
+#se.techinsight.listeners.ReportModifierListener

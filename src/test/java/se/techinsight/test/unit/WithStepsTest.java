@@ -20,9 +20,9 @@ import static org.hamcrest.core.Is.is;
 
 @Feature("Steps Feature")
 @Story(Behaviors.Story.SIMPLE_STORY)
-public class TestWithSteps {
+public class WithStepsTest {
 
-    private static final Logger log = LoggerFactory.getLogger(TestWithSteps.class);
+    private static final Logger log = LoggerFactory.getLogger(WithStepsTest.class);
 
     @Description("Test with 3 steps and 1 nested step")
     @Test
