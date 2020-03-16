@@ -21,4 +21,7 @@ Travis CI config for PhantomJS you can see here [Travis CI]
 
 9 mail/mailx command examples to send emails from command line on Linux [linux mail]
 
+* mvn versions:display-dependency-updates
+* mvn clean test -Dgroups=change_name site
+* java -classpath ./target/classes;mail-1.4.7.jar;. mailer.SendMail
 

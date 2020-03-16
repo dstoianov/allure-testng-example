@@ -7,8 +7,8 @@ import java.io.IOException;
  */
 public class SendMail {
 
-    public static final String USERNAME = "test.techinsight@gmail.com";
-    public static final String PASS = "22222299";
+    public static final String USERNAME = "mail@gmail.com";
+    public static final String PASS = "1234567";
 
     public static void main(String[] args) throws IOException {
 

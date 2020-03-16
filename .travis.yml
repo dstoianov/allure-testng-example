@@ -15,22 +15,18 @@ before_install:
   - sleep 5
   - export TZ=Europe/Kiev
   - date
-  - gem install mail
-  - "python -V"
-  - "ruby -v"
 
 script:
  - mvn clean test
 
 after_script:
-  - mvn -Dallure.issues.tracker.pattern=http://google.com/issues/%%s -Dallure.tests.management.pattern=http://google.com/tests/%%s -Dproject.build.sourceEncoding=UTF-8 -Dproject.reporting.outputEncoding=UTF-8 site
-  - sleep 1
-  - pwd
-  - "ls -lh target/site/allure-maven-plugin/"
-  - "tar -zcvf allure_result.tar.gz target/site/allure-maven-plugin/"
-  - "ls -lh"
-  - sleep 2
-  - "ruby mail.rb"
+ - mvn site
+ - sleep 1
+ - pwd
+ - "ls -lh target/site/allure-maven-plugin/"
+ - "tar -zcvf allure_result.tar.gz target/site/allure-maven-plugin/"
+ - "ls -lh"
 
-notifications:
- email: test.techinsight@gmail.com
+
+#notifications:
+# email: test@gmail.com
