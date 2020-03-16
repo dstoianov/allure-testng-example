@@ -11,9 +11,12 @@ To run tests you need to install [maven][maven], [git][git] and [phantomjs][phan
 
 To generate Allure Report you should perform following steps:
 
-* git clone git@github.com:allure-framework/allure-testng-example.git
-* mvn clean test
-* mvn site
+
+```shell script
+git clone git@github.com:allure-framework/allure-testng-example.git
+mvn clean test
+mvn site
+```
 
 
 Travis CI config for PhantomJS you can see here [Travis CI]
@@ -21,7 +24,7 @@ Travis CI config for PhantomJS you can see here [Travis CI]
 
 9 mail/mailx command examples to send emails from command line on Linux [linux mail]
 
-* mvn versions:display-dependency-updates
-* mvn clean test -Dgroups=change_name site
-* java -classpath ./target/classes;mail-1.4.7.jar;. mailer.SendMail
+* `mvn versions:display-dependency-updates`
+* `mvn clean test -Dgroups=change_name site`
+* `java -classpath ./target/classes;mail-1.4.7.jar;. mailer.SendMail`
 
