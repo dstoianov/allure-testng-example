@@ -5,9 +5,11 @@ To run tests you need to install [maven][maven], [git][git] and [phantomjs][phan
 
 To generate Allure Report you should perform following steps:
 
-* git clone git@github.com:allure-framework/allure-testng-example.git
-* mvn clean test
-* mvn site
+```bash
+git clone git@github.com:allure-framework/allure-testng-example.git
+mvn clean test
+mvn site
+```
 
 .Maven commands:
 * mvn versions:display-dependency-updates
