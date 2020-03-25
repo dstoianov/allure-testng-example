@@ -46,7 +46,9 @@ public class BrowserHolder {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", false);
 
-        return new RemoteWebDriver(URI.create("http://192.168.178.100:4444/wd/hub").toURL(), capabilities);
+        RemoteWebDriver driver = new RemoteWebDriver(URI.create("http://192.168.178.100:4444/wd/hub").toURL(), capabilities);
+        driver.manage().window().maximize();
+        return driver;
     }
 
     public static WebDriver getDriver() {
