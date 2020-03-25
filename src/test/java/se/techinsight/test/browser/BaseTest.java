@@ -20,7 +20,7 @@ public class BaseTest {
     }
 
     @BeforeClass
-    public void setUpPath() {
+    public void setUp() {
         BrowserHolder.init();
     }
 

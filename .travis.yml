@@ -17,7 +17,6 @@ before_install:
   - date
   - gem install mail
   - "python -V"
-  - "ruby -v"
 
 script:
  - mvn clean test
@@ -29,8 +28,6 @@ after_script:
   - "ls -lh target/site/allure-maven-plugin/"
   - "tar -zcvf allure_result.tar.gz target/site/allure-maven-plugin/"
   - "ls -lh"
-  - sleep 2
-  - "ruby mail.rb"
 
 notifications:
  email: test.techinsight@gmail.com

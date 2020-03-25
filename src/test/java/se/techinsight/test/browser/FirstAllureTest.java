@@ -1,15 +1,6 @@
 package se.techinsight.test.browser;
 
-import io.qameta.allure.Attachment;
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Issue;
-import io.qameta.allure.Issues;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Stories;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -75,9 +66,9 @@ public class FirstAllureTest extends BaseTest {
         +
         "}";
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
-        super.setUpPath();
+        super.setUp();
     }
 
     @AfterClass(alwaysRun = true)
