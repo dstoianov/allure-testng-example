@@ -21,8 +21,8 @@ public class BrowserHolder {
 
     public static void init() {
         String browser = System.getProperty("browser", "chrome");
-        boolean remote = Boolean.parseBoolean(System.getProperty("remote", "false"));
-//        boolean remote = true;
+//        boolean remote = Boolean.parseBoolean(System.getProperty("remote", "false"));
+        boolean remote = true;
 
         log.info("Going to use '{}' browser", browser);
         if (remote) {

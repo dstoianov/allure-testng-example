@@ -15,7 +15,7 @@ import se.techinsight.steps.WebDriverSteps;
 public class FireFoxBrowserTest extends BaseTest {
 
     @BeforeMethod
-    public void setUp() {
+    public void beforeMethod() {
         steps = new WebDriverSteps(getDriver());
     }
 

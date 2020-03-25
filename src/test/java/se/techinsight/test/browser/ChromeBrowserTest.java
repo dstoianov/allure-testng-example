@@ -17,7 +17,7 @@ import static org.testng.Assert.fail;
 public class ChromeBrowserTest extends BaseTest {
 
     @BeforeMethod
-    public void setUp() {
+    public void beforeMethod() {
         steps = new WebDriverSteps(getDriver());
     }
 

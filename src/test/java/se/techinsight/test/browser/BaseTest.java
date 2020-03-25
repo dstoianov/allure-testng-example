@@ -19,7 +19,7 @@ public class BaseTest {
         return BrowserHolder.getDriver();
     }
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         BrowserHolder.init();
     }
